@@ -4,64 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Data Display</title>
-    <!-- <script>
-           
-
-        async function prodDisplay() {
- let productDiv = document.querySelector(".div");
- try {
-     // Clear previous content
-     productDiv.innerHTML = '';
-
-     // Fetch data from API
-     let response = await fetch('https://dummyjson.com/carts');
-     
-     // Check if the request was successful
-     if (!response.ok) {
-         throw new Error('Failed to fetch data from the server');
-     }
-     
-     // Parse the JSON response
-     let data = await response.json();
-     
-     // Access the carts array from the data
-     let carts = data.carts;
-
-     // Iterate through each cart
-     carts.forEach(cart => {
-         // Iterate through each product in the cart
-         cart.products.forEach(product => {
-             // Create HTML content for each product
-             productDiv.innerHTML += `<div class="divItm">
-                 <h2>${product.title}</h2>
-                 <div class="img">
-                     <img src="${product.thumbnail}" alt="">
-                 </div>
-             </div>
-                 `;
-         });
-     });
- } catch (error) {
-     // Handle errors gracefully
-     console.error('Error fetching or parsing data:', error);
- }
-}
-
-// Call the async function
-prodDisplay();
-
-
-     </script> -->
-     <script src="script.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="main">
-        <div class="head">
-            <h1>THE PRODUCT APP</h1>
-        </div>
-        <div id="div">
-            
-
-        </div>
+    <h1>API Data:</h1>
+    <pre id="output">Loading...</pre>
 </body>
 </html>
