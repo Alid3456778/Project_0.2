@@ -581,6 +581,17 @@ transform: translateX(0);
     width: 400px;
 
 }
+
+.search-section{
+    background-color: aqua;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
 .next{
     height: 2000px;
     width: 100%;
