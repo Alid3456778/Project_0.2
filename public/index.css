@@ -420,19 +420,19 @@ nav {
 
 .right-base-1{
     position: absolute;
-    top: 300px;
+    top: 250px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }
 .right-base-2{
     position: absolute;
-    top: 400px;
+    top: 350px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }
 .right-base-3{
     position: absolute;
-    top:500px;
+    top:450px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }
@@ -584,7 +584,7 @@ transform: translateX(0);
 
 .search-section{
     background-color: aqua;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
