@@ -1,0 +1,44 @@
+{
+    "mumbai": [
+        {
+            "name": "Grand Central Hotel",
+            "price": 200
+        },
+        {
+            "name": "Empire State Inn",
+            "price": 180
+        },
+        {
+            "name": "Times Square Suites",
+            "price": 250
+        }
+    ],
+    "paris": [
+        {
+            "name": "Eiffel View Hotel",
+            "price": 220
+        },
+        {
+            "name": "Louvre Palace Inn",
+            "price": 190
+        },
+        {
+            "name": "Seine River Lodge",
+            "price": 170
+        }
+    ],
+    "tokyo": [
+        {
+            "name": "Shinjuku Sky Hotel",
+            "price": 180
+        },
+        {
+            "name": "Tokyo Tower Inn",
+            "price": 210
+        },
+        {
+            "name": "Akihabara Tech Lodge",
+            "price": 160
+        }
+    ]
+}
