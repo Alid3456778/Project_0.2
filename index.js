@@ -19,9 +19,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-
-
-
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
@@ -30,7 +27,6 @@ app.use(express.static('public'));
 
 // Define a route to render the index.ejs file
 app.get('/', (req, res) => {
-    localStorage.clear();
     res.render('index');
 });
 
