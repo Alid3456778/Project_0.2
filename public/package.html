@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details</title>
+    <link rel="stylesheet" href="prototype.css">
+</head>
+<body>
+    <div id="package-details"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const packageName = params.get('name');
+            
+            if (packageName) {
+                const storedData = localStorage.getItem('tourData');
+                if (storedData) {
+                    const tourData = JSON.parse(storedData);
+                    const packageData = tourData[packageName.toLowerCase()];
+                    
+                    if (packageData) {
+                        const detailsDiv = document.getElementById('package-details');
+                        detailsDiv.innerHTML = `
+                            <h1>${packageData.name}</h1>
+                            <p>Price: $${packageData.price}</p>
+                            <p>Description: ${packageData.description}</p>
+                            <p>Best time to visit: ${packageData.best_time_to_visit}</p>
+                            <p>Top attractions: ${packageData.top_attractions}</p>
+                            <p>Activities: ${packageData.activities}</p>
+                            <p>Local dishes: ${packageData.local_dishes}</p>
+                            <p>Language: ${packageData.language}</p>
+                            <p>Currency: ${packageData.currency}</p>
+                        `;
+                    } else {
+                        document.getElementById('package-details').innerHTML = '<p>Package not found.</p>';
+                    }
+                }
+            } else {
+                document.getElementById('package-details').innerHTML = '<p>No package selected.</p>';
+            }
+        });
+    </script>
+</body>
+</html> 
+
+

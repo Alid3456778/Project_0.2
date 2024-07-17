@@ -1,44 +1,423 @@
 {
     "mumbai": [
-        {
-            "name": "Grand Central Hotel",
-            "price": 200
-        },
-        {
-            "name": "Empire State Inn",
-            "price": 180
-        },
-        {
-            "name": "Times Square Suites",
-            "price": 250
-        }
+        
+            {
+              "name": "Mumbai City Tour",
+              "price": 100,
+              "description": "Explore the vibrant city of Mumbai with this comprehensive city tour.",
+              "best_time_to_visit": "October to March",
+              "top_attraction": [
+                {
+                  "name": "Gateway of India",
+                  "image": "https://example.com/images/gateway_of_india.jpg"
+                },
+                {
+                  "name": "Marine Drive",
+                  "image": "https://example.com/images/marine_drive.jpg"
+                },
+                {
+                  "name": "Chhatrapati Shivaji Maharaj Terminus",
+                  "image": "https://example.com/images/cst.jpg"
+                },
+                {
+                  "name": "Elephanta Caves",
+                  "image": "https://example.com/images/elephanta_caves.jpg"
+                },
+                {
+                  "name": "Haji Ali Dargah",
+                  "image": "https://example.com/images/haji_ali.jpg"
+                }
+              ],
+              "activities": [
+                "Sightseeing",
+                "Shopping at Colaba Causeway",
+                "Visit to Bollywood studios",
+                "Walking tour of Dharavi Slum"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Vada Pav",
+                  "image": "https://example.com/images/vada_pav.jpg"
+                },
+                {
+                  "name": "Pav Bhaji",
+                  "image": "https://example.com/images/pav_bhaji.jpg"
+                },
+                {
+                  "name": "Bhel Puri",
+                  "image": "https://example.com/images/bhel_puri.jpg"
+                },
+                {
+                  "name": "Bombay Sandwich",
+                  "image": "https://example.com/images/bombay_sandwich.jpg"
+                },
+                {
+                  "name": "Pani Puri",
+                  "image": "https://example.com/images/pani_puri.jpg"
+                }
+              ],
+              "language": "Marathi, Hindi, English",
+              "currency": "Indian Rupee (INR)"
+            },
+            {
+              "name": "Mumbai Cultural Experience",
+              "price": 150,
+              "description": "Immerse yourself in the rich cultural heritage of Mumbai.",
+              "best_time_to_visit": "November to February",
+              "top_attraction": [
+                {
+                  "name": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
+                  "image": "https://example.com/images/csmvs.jpg"
+                },
+                {
+                  "name": "Kala Ghoda Art Precinct",
+                  "image": "https://example.com/images/kala_ghoda.jpg"
+                },
+                {
+                  "name": "Banganga Tank",
+                  "image": "https://example.com/images/banganga_tank.jpg"
+                },
+                {
+                  "name": "Prithvi Theatre",
+                  "image": "https://example.com/images/prithvi_theatre.jpg"
+                },
+                {
+                  "name": "Global Vipassana Pagoda",
+                  "image": "https://example.com/images/global_vipassana_pagoda.jpg"
+                }
+              ],
+              "activities": [
+                "Museum visits",
+                "Art gallery tours",
+                "Cultural performances",
+                "Temple visits",
+                "Historical walks"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Kheema Pav",
+                  "image": "https://example.com/images/kheema_pav.jpg"
+                },
+                {
+                  "name": "Bombil Fry",
+                  "image": "https://example.com/images/bombil_fry.jpg"
+                },
+                {
+                  "name": "Kolhapuri Chicken",
+                  "image": "https://example.com/images/kolhapuri_chicken.jpg"
+                },
+                {
+                  "name": "Malvani Fish Curry",
+                  "image": "https://example.com/images/malvani_fish_curry.jpg"
+                },
+                {
+                  "name": "Modak",
+                  "image": "https://example.com/images/modak.jpg"
+                }
+              ],
+              "language": "Marathi, Hindi, English",
+              "currency": "Indian Rupee (INR)"
+            },
+            {
+              "name": "Mumbai Beaches and Nightlife",
+              "price": 120,
+              "description": "Enjoy the lively beaches and vibrant nightlife of Mumbai.",
+              "best_time_to_visit": "December to February",
+              "top_attraction": [
+                {
+                  "name": "Juhu Beach",
+                  "image": "https://example.com/images/juhu_beach.jpg"
+                },
+                {
+                  "name": "Versova Beach",
+                  "image": "https://example.com/images/versova_beach.jpg"
+                },
+                {
+                  "name": "Girgaum Chowpatty",
+                  "image": "https://example.com/images/girgaum_chowpatty.jpg"
+                },
+                {
+                  "name": "Bandra-Worli Sea Link",
+                  "image": "https://example.com/images/bandra_worli_sea_link.jpg"
+                },
+                {
+                  "name": "Taj Mahal Palace Hotel",
+                  "image": "https://example.com/images/taj_mahal_palace.jpg"
+                }
+              ],
+              "activities": [
+                "Beach activities",
+                "Street food tours",
+                "Nightclub visits",
+                "Live music performances",
+                "Sunset views at Bandra Fort"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Bombay Duck Fry",
+                  "image": "https://example.com/images/bombay_duck_fry.jpg"
+                },
+                {
+                  "name": "Butter Garlic Crab",
+                  "image": "https://example.com/images/butter_garlic_crab.jpg"
+                },
+                {
+                  "name": "Sev Puri",
+                  "image": "https://example.com/images/sev_puri.jpg"
+                },
+                {
+                  "name": "Batata Vada",
+                  "image": "https://example.com/images/batata_vada.jpg"
+                },
+                {
+                  "name": "Falooda",
+                  "image": "https://example.com/images/falooda.jpg"
+                }
+              ],
+              "language": "Marathi, Hindi, English",
+              "currency": "Indian Rupee (INR)"
+            }
+          
+          
     ],
     "paris": [
-        {
-            "name": "Eiffel View Hotel",
-            "price": 220
-        },
-        {
-            "name": "Louvre Palace Inn",
-            "price": 190
-        },
-        {
-            "name": "Seine River Lodge",
-            "price": 170
-        }
-    ],
-    "tokyo": [
-        {
-            "name": "Shinjuku Sky Hotel",
-            "price": 180
-        },
-        {
-            "name": "Tokyo Tower Inn",
-            "price": 210
-        },
-        {
-            "name": "Akihabara Tech Lodge",
-            "price": 160
-        }
+        
+            {
+              "name": "Classic Paris Tour",
+              "price": 200,
+              "description": "Discover the classic sights and sounds of Paris with this comprehensive tour.",
+              "best_time_to_visit": "April to June, September to November",
+              "top_attraction": [
+                {
+                  "name": "Eiffel Tower",
+                  "image": "https://example.com/images/eiffel_tower.jpg"
+                },
+                {
+                  "name": "Louvre Museum",
+                  "image": "https://example.com/images/louvre_museum.jpg"
+                },
+                {
+                  "name": "Notre-Dame Cathedral",
+                  "image": "https://example.com/images/notre_dame.jpg"
+                },
+                {
+                  "name": "Arc de Triomphe",
+                  "image": "https://example.com/images/arc_de_triomphe.jpg"
+                },
+                {
+                  "name": "Champs-Élysées",
+                  "image": "https://example.com/images/champs_elysees.jpg"
+                }
+              ],
+              "activities": [
+                "Sightseeing",
+                "Museum visits",
+                "Seine River cruise",
+                "Shopping at Champs-Élysées",
+                "Walking tours"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Croissant",
+                  "image": "https://example.com/images/croissant.jpg"
+                },
+                {
+                  "name": "Baguette",
+                  "image": "https://example.com/images/baguette.jpg"
+                },
+                {
+                  "name": "Escargot",
+                  "image": "https://example.com/images/escargot.jpg"
+                },
+                {
+                  "name": "Ratatouille",
+                  "image": "https://example.com/images/ratatouille.jpg"
+                },
+                {
+                  "name": "Crêpes",
+                  "image": "https://example.com/images/crepes.jpg"
+                }
+              ],
+              "language": "French",
+              "currency": "Euro (EUR)"
+            },
+            {
+              "name": "Romantic Paris Getaway",
+              "price": 300,
+              "description": "Enjoy a romantic getaway in the City of Love with special activities for couples.",
+              "best_time_to_visit": "May to September",
+              "top_attraction": [
+                {
+                  "name": "Montmartre",
+                  "image": "https://example.com/images/montmartre.jpg"
+                },
+                {
+                  "name": "Sainte-Chapelle",
+                  "image": "https://example.com/images/sainte_chapelle.jpg"
+                },
+                {
+                  "name": "Luxembourg Gardens",
+                  "image": "https://example.com/images/luxembourg_gardens.jpg"
+                },
+                {
+                  "name": "Pont des Arts",
+                  "image": "https://example.com/images/pont_des_arts.jpg"
+                },
+                {
+                  "name": "Seine River",
+                  "image": "https://example.com/images/seine_river.jpg"
+                }
+              ],
+              "activities": [
+                "Picnics in the park",
+                "Romantic dinners",
+                "Couples' spa day",
+                "Sunset cruises on the Seine",
+                "Exploring charming neighborhoods"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Coq au Vin",
+                  "image": "https://example.com/images/coq_au_vin.jpg"
+                },
+                {
+                  "name": "Beef Bourguignon",
+                  "image": "https://example.com/images/beef_bourguignon.jpg"
+                },
+                {
+                  "name": "Tarte Tatin",
+                  "image": "https://example.com/images/tarte_tatin.jpg"
+                },
+                {
+                  "name": "Soufflé",
+                  "image": "https://example.com/images/souffle.jpg"
+                },
+                {
+                  "name": "Macarons",
+                  "image": "https://example.com/images/macarons.jpg"
+                }
+              ],
+              "language": "French",
+              "currency": "Euro (EUR)"
+            },
+            {
+              "name": "Art and Culture Tour",
+              "price": 250,
+              "description": "Delve into the rich art and culture of Paris with this specialized tour.",
+              "best_time_to_visit": "March to June, October to December",
+              "top_attraction": [
+                {
+                  "name": "Musée d'Orsay",
+                  "image": "https://example.com/images/musee_dorsay.jpg"
+                },
+                {
+                  "name": "Centre Pompidou",
+                  "image": "https://example.com/images/centre_pompidou.jpg"
+                },
+                {
+                  "name": "Palace of Versailles",
+                  "image": "https://example.com/images/versailles.jpg"
+                },
+                {
+                  "name": "Opéra Garnier",
+                  "image": "https://example.com/images/opera_garnier.jpg"
+                },
+                {
+                  "name": "Shakespeare and Company",
+                  "image": "https://example.com/images/shakespeare_and_company.jpg"
+                }
+              ],
+              "activities": [
+                "Museum tours",
+                "Art gallery visits",
+                "Historical site tours",
+                "Live performances",
+                "Bookstore visits"
+              ],
+              "local_dishes": [
+                {
+                  "name": "Duck Confit",
+                  "image": "https://example.com/images/duck_confit.jpg"
+                },
+                {
+                  "name": "Onion Soup",
+                  "image": "https://example.com/images/onion_soup.jpg"
+                },
+                {
+                  "name": "Quiche Lorraine",
+                  "image": "https://example.com/images/quiche_lorraine.jpg"
+                },
+                {
+                  "name": "Crème Brûlée",
+                  "image": "https://example.com/images/creme_brulee.jpg"
+                },
+                {
+                  "name": "Cheese Platter",
+                  "image": "https://example.com/images/cheese_platter.jpg"
+                }
+              ],
+              "language": "French",
+              "currency": "Euro (EUR)"
+            }, 
+            {
+                "name": "New Art",
+                "price": 250,
+                "description": "Delve into the rich art and culture of Paris with this specialized tour.",
+                "best_time_to_visit": "March to June, October to December",
+                "top_attraction": [
+                  {
+                    "name": "Musée d'Orsay",
+                    "image": "https://example.com/images/musee_dorsay.jpg"
+                  },
+                  {
+                    "name": "Centre Pompidou",
+                    "image": "https://example.com/images/centre_pompidou.jpg"
+                  },
+                  {
+                    "name": "Palace of Versailles",
+                    "image": "https://example.com/images/versailles.jpg"
+                  },
+                  {
+                    "name": "Opéra Garnier",
+                    "image": "https://example.com/images/opera_garnier.jpg"
+                  },
+                  {
+                    "name": "Shakespeare and Company",
+                    "image": "https://example.com/images/shakespeare_and_company.jpg"
+                  }
+                ],
+                "activities": [
+                  "Museum tours",
+                  "Art gallery visits",
+                  "Historical site tours",
+                  "Live performances",
+                  "Bookstore visits"
+                ],
+                "local_dishes": [
+                  {
+                    "name": "Duck Confit",
+                    "image": "https://example.com/images/duck_confit.jpg"
+                  },
+                  {
+                    "name": "Onion Soup",
+                    "image": "https://example.com/images/onion_soup.jpg"
+                  },
+                  {
+                    "name": "Quiche Lorraine",
+                    "image": "https://example.com/images/quiche_lorraine.jpg"
+                  },
+                  {
+                    "name": "Crème Brûlée",
+                    "image": "https://example.com/images/creme_brulee.jpg"
+                  },
+                  {
+                    "name": "Cheese Platter",
+                    "image": "https://example.com/images/cheese_platter.jpg"
+                  }
+                ],
+                "language": "French",
+                "currency": "Euro (EUR)"
+              } 
     ]
+    
 }
