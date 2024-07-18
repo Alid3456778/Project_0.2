@@ -420,19 +420,19 @@ nav {
 
 .right-base-1{
     position: absolute;
-    top: 250px;
+    top: 300px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }
 .right-base-2{
     position: absolute;
-    top: 350px;
+    top: 400px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }
 .right-base-3{
     position: absolute;
-    top:450px;
+    top:500px;
     padding-left: 100px;
     border-bottom: 2px solid white;
 }

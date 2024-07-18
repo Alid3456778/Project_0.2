@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+ <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,4 +45,88 @@
 </body>
 </html> 
 
-
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Package Details</title>
+     <style>
+         .top-attraction, .local-dish {
+             margin-bottom: 10px;
+         }
+         .top-attraction img, .local-dish img {
+             width: 100px;
+             height: 100px;
+         }
+     </style>
+ </head>
+ <body>
+     <div id="packageDetails"></div>
+ 
+     <script>
+         function getQueryParams() {
+             const params = new URLSearchParams(window.location.search);
+             return {
+                 id: params.get('id')
+             };
+         }
+ 
+         function displayPackageDetails() {
+             const { id } = getQueryParams();
+             const hotels = JSON.parse(localStorage.getItem('hotels'));
+             const hotel = hotels[id];
+             const packageDetailsDiv = document.getElementById('packageDetails');
+             
+             const topAttractions = hotel.top_attraction.map(attraction => `
+                 <div class="top-attraction">
+                     <h4>${attraction.name}</h4>
+                     <img src="${attraction.image}" alt="${attraction.name}">
+                 </div>
+             `).join('');
+ 
+             const localDishes = hotel.local_dishes.map(dish => `
+                 <div class="local-dish">
+                     <h4>${dish.name}</h4>
+                     <img src="${dish.image}" alt="${dish.name}">
+                 </div>
+             `).join('');
+ 
+             packageDetailsDiv.innerHTML = `<div class="container">
+                                <div class="box1">
+                                    <img src="${hotel.image}" alt="${hotel.name}">
+                                </div>
+                                <div class="box2">
+                                    <h3>${hotel.name}</h3>
+                                    <p><strong>Price:</strong> $${hotel.price}</p>
+                                    <p><strong>Description:</strong> ${hotel.description}</p>
+                                    <p><strong>Best time to visit:</strong> ${hotel.best_time_to_visit}</p>
+                                    <h4>Top Attractions:</h4>
+                                    <ul>
+                                        ${hotel.top_attraction.map(attraction => `<li>${attraction}</li>`).join('')}
+                                    </ul>
+                                    <h4>Activities:</h4>
+                                    <ul>
+                                        ${hotel.activities.map(activity => `<li>${activity}</li>`).join('')}
+                                    </ul>
+                                    <h4>Local Dishes:</h4>
+                                    <ul>
+                                        ${hotel.local_dishes.map(dish => `<li>${dish}</li>`).join('')}
+                                    </ul>
+                                    <p><strong>Language:</strong> ${hotel.language}</p>
+                                    <p><strong>Currency:</strong> ${hotel.currency}</p>
+                                    <h4>Days:</h4>
+                                    <ul>
+                                        ${hotel.days.map(day => `<li>Day ${day.day}: ${day.schedule}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>`;
+         }
+ 
+         // Call the function to display the package details
+         displayPackageDetails();
+     </script>
+ </body>
+ </html>
+ 

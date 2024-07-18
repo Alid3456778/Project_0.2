@@ -1,59 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRAVEL API Results</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="prototype.css">
-    <style>
-        .hotel-card {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .box1 {
-            flex: 1;
-            margin-right: 20px;
-        }
-        .box1 img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <!-- Your existing head content -->
 </head>
 <body>
     <div class="main">
-        <div id="results">
-        </div>
-        <div class="div" id="resultsDiv">
-        </div>
+        <div id="results"></div>
+        <div class="div" id="resultsDiv"></div>
     </div>
 
     <script>
         let tourData = {};
-        let tourUs={}
         let name;
 
         document.addEventListener('DOMContentLoaded', () => {
-            const placeInput = document.getElementById('place-input');
             const resultsDiv = document.getElementById('results');
-            const addHotelForm = document.getElementById('add-hotel-form');
             const productDiv = document.querySelector(".div");
-
-            // Load initial data and last search query
-          
 
             async function places(searchQuery) {
                 try {
@@ -92,21 +54,14 @@
                 }
             }
 
-            function loadData() {
-                const storedData = localStorage.getItem('tourData');
-                if (storedData) {
-                    tourData = JSON.parse(storedData);
-                } else {
-                    fetch('data.json')
-                        .then(response => response.json())
-                        .then(data => {
-                            tourData = data;
-                            localStorage.setItem('tourData', JSON.stringify(tourData));
-                            console.log("data is fetch and data is",tourData);
-                        })
-                        .catch(error => {
-                            console.error('Error loading initial data:', error);
-                        });
+            async function loadData() {
+                try {
+                    const response = await fetch('data.json');
+                    tourData = await response.json();
+                    console.log("Data is fetched and data is", tourData);
+                    searchPlace();
+                } catch (error) {
+                    console.error('Error loading initial data:', error);
                 }
             }
 
@@ -115,14 +70,13 @@
                 if (searchQuery) {
                     name = searchQuery;
                     places(name);
-                    searchPlace();
                 }
             }
 
             function searchPlace() {
+                if (!name) return;
                 const place = name.toLowerCase();
                 const placeData = tourData[place];
-                console.log()
                 if (placeData) {
                     displayResults(placeData, place);
                 } else {
@@ -131,169 +85,22 @@
             }
 
             function displayResults(hotels, place) {
-    resultsDiv.innerHTML = '';
-    hotels.forEach(hotel => {
-        const hotelCard = document.createElement('div');
-        hotelCard.classList.add('hotel-card');
-        hotelCard.innerHTML = `
-            <h2><a href="package.html?name=${hotel.name}">${hotel.name}</a></h2>
-            <p>Price: $${hotel.price}</p>
-        `;
-        resultsDiv.appendChild(hotelCard);
-    });
-}
-
-
-            loadData();
-            loadLastSearchQuery();
-            //  localStorage.clear();
-        });
-    </script>
-</body>
-</html> 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRAVEL API Results</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@200;300;400;500;700;800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="prototype.css">
-    <style>
-        .hotel-card {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .box1 {
-            flex: 1;
-            margin-right: 20px;
-        }
-        .box1 img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    <div class="main">
-        <div id="results"></div>
-        <div class="div" id="resultsDiv"></div>
-    </div>
-
-    <script>
-        let tourData = {};
-        let name = "";
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const resultsDiv = document.getElementById('results');
-            const productDiv = document.getElementById('resultsDiv');
-
-            async function places(searchQuery) {
-                try {
-                    productDiv.innerHTML = '';
-                    let product = await fetch(`https://freetestapi.com/api/v1/destinations?search=${searchQuery}`);
-                    let finalProduct = await product.json();
-                    console.log(finalProduct);
-                    finalProduct.forEach(dest => {
-                        productDiv.innerHTML += `
-                            <div class="container">
-                                <div class="box1">
-                                    <img src="${dest.image}" alt="">
-                                </div>
-                                <div class="box1" id="box2">
-                                    <h3>${dest.name} | ${dest.country}</h3>
-                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                                    <h4 class="sub-heading">About :</h4>
-                                    <p>${dest.description}</p>
-                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="box1">
-                                    <h4>Best time to visit :</h4><p>${dest.best_time_to_visit}</p>
-                                    <h4>Tourists Places :</h4><p>${dest.top_attractions}</p>
-                                    <h4>What you experience :</h4><p>${dest.activities}</p>
-                                    <h4>Popular dishes :</h4><p>${dest.local_dishes}</p>
-                                    <h4>Their language and currency :</h4>
-                                    <p>${dest.language} | ${dest.currency}</p>
-                                </div>
-                            </div>
-                        `;
-                    });
-                } catch (error) {
-                    console.error('Error fetching or parsing data:', error);
-                }
-            }
-
-            function loadData() {
-                const storedData = localStorage.getItem('tourData');
-                if (storedData) {
-                    tourData = JSON.parse(storedData);
-                    console.log('Loaded data from localStorage:', tourData);
-                } else {
-                    fetch('data.json')
-                        .then(response => response.json())
-                        .then(data => {
-                            tourData = data;
-                            localStorage.setItem('tourData', JSON.stringify(tourData));
-                            console.log('Fetched data from JSON file:', tourData);
-                        })
-                        .catch(error => {
-                            console.error('Error loading initial data:', error);
-                        });
-                }
-            }
-
-            function loadLastSearchQuery() {
-                const searchQuery = localStorage.getItem('searchQuery');
-                if (searchQuery) {
-                    name = searchQuery;
-                    places(name);
-                    searchPlace();
-                }
-            }
-
-            function searchPlace() {
-                const place = name.toLowerCase();
-                const placeData = tourData[place];
-                if (placeData) {
-                    displayResults(placeData);
-                } else {
-                    resultsDiv.innerHTML = '<p>No results found for this place.</p>';
-                }
-            }
-
-            function displayResults(hotels) {
+                const resultsDiv = document.getElementById('resultsDiv');
                 resultsDiv.innerHTML = '';
-                hotels.forEach(hotel => {
+                hotels.forEach((hotel, index) => {
                     const hotelCard = document.createElement('div');
                     hotelCard.classList.add('hotel-card');
                     hotelCard.innerHTML = `
-                        <h2><a href="package.html?name=${hotel.name}">${hotel.name}</a></h2>
+                        <h2><a href="package.html?id=${index}">${hotel.name}</a></h2>
                         <p>Price: $${hotel.price}</p>
                     `;
                     resultsDiv.appendChild(hotelCard);
                 });
             }
 
-            // Clear localStorage for testing
-            localStorage.clear();
-
             loadData();
             loadLastSearchQuery();
         });
     </script>
 </body>
-</html> -->
+</html>
