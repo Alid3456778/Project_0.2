@@ -1,0 +1,68 @@
+[
+  {
+    "price": "20000"
+  },
+  {
+    "price": "20000"
+  },
+  {
+    "description": "Chapro",
+    "price": "50"
+  },
+  {
+    "description": "Enjoy maratha feel",
+    "price": "20000"
+  },
+  {
+    "description": "Enjoy maratha feel",
+    "price": "20000"
+  },
+  {
+    "package": "mahaerah",
+    "description": "Enjoy maratha feel",
+    "price": "20000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
+    "package": "mahaerah",
+    "description": "Enjoy maratha feel",
+    "price": "20000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
+    "package": "mahaerah",
+    "description": "Enjoy maratha feel",
+    "price": "20000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
+    "package": "mahaerah",
+    "description": "Enjoy maratha feel",
+    "price": "20000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  }
+]

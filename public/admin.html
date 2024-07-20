@@ -17,18 +17,29 @@
 <body>
     <h1>Tour Packages Admin Panel</h1>
     
-    <form id="addPackageForm">
-        <input type="text" id="id" placeholder="ID" required>
-        <input type="text" id="name" placeholder="Package Name" required>
-        <input type="text" id="description" placeholder="Description" required>
-        <input type="number" id="price" placeholder="Price" required>
+    <form id="addPackageForm" action="/admin" method="post">
+        <!-- <input type="text" id="id" placeholder="ID" name="id" required> -->
+        <input type="text" id="name" placeholder="Package Name" name="name" required>
+        <input type="text" id="description" placeholder="Description" name="descp" required>
+        <input type="number" id="price" placeholder="Price" required name="price">
+        <input type="text" id="image" placeholder="Image URL" name="pic">
+        <input type="text" id="best_time_to_vist" placeholder="best Time to visit" name="best_time_to_vist">
+        <input type="text" id="top_attraction" placeholder="top_attraction" name="top_attraction">
+        <input type="text" id="activities" placeholder="activities" name="activities">
+        <input type="text" id="local_dishes" placeholder="local_dishes" name="local_dishes">
+        <input type="text" id="language" placeholder="language" name="language">
+        <input type="text" id="currency" placeholder="currency" name="currency">
         <button type="submit">Add Package</button>
     </form>
-
+    <h1>Delete Tour Package</h1>
+    <form id="deletePackageForm" action="/delete" method="post">
+        <input type="text" id="delete_name" placeholder="Package Name to Delete" name="packageName" required>
+        <button type="submit">Delete Package</button>
+    </form>
     <h2>Packages List</h2>
     <ul id="packagesList"></ul>
 
-    <script>
+    <!-- <script>
         const addPackageForm = document.getElementById('addPackageForm');
         const packagesList = document.getElementById('packagesList');
 
@@ -97,6 +108,6 @@
 
         // Initial fetch of packages
         fetchPackages();
-    </script>
+    </script> -->
 </body>
 </html>
