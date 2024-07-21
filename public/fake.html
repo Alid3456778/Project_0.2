@@ -179,31 +179,18 @@
                 }
             }
 
-            // function searchPlace() {
-            //     if (!name) return;
-            //     const place = name.toLowerCase();
-            //     const placeData = tourData[place];
-            //     console.log("place name is ",placeData)
-            //     if (placeData) {
-            //         displayResults(placeData, place);
-            //     } else {
-            //         resultsDiv.innerHTML = '<p>No results found for this place.</p>';
-            //     }
-            // }
             function searchPlace() {
-    if (!name) return;
-    const place = name.toLowerCase();
-
-    // Find the place in the tourData array
-    const placeData = tourData.find(item => item.package.toLowerCase() === place || item.name.toLowerCase() === place);
-
-    console.log("Place data is ", placeData);
-    if (placeData) {
-        displayResults(placeData, place);
-    } else {
-        resultsDiv.innerHTML = '<p>No results found for this place.</p>';
-    }
-}
+                if (!name) return;
+                const place = name.toLowerCase();
+                const placeData = tourData[place];
+                console.log("place name is ",placeData)
+                if (placeData) {
+                    displayResults(placeData, place);
+                } else {
+                    resultsDiv.innerHTML = '<p>No results found for this place.</p>';
+                }
+            }
+            
 
 
             function displayResults(hotels, place) {
