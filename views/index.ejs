@@ -219,6 +219,7 @@
                 // Save the data to localStorage
                 localStorage.setItem('tourPackages', JSON.stringify(data));
                 console.log('Data saved to localStorage');
+                //console.log(JSON.stringify(data));
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
