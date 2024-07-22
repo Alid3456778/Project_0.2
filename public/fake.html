@@ -104,10 +104,10 @@
     </script>
 </body>
 </html> -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your existing head content -->
+    
 </head>
 <body>
     <div class="main">
@@ -202,6 +202,132 @@
                     hotelCard.innerHTML = `
                         <h2><a href="package.html?id=${index}">${hotel.name}</a></h2>
                         <p>Price: $${hotel.price}</p>
+                    `;
+                    resultsDiv.appendChild(hotelCard);
+                });
+            }
+
+            loadData();
+            loadLastSearchQuery();
+
+
+        });
+
+        
+        
+        
+
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your existing head content -->
+</head>
+<body>
+    <div class="main">
+        <div id="results"></div>
+        <div class="div" id="resultsDiv"></div>
+    </div>
+
+    <script>
+        let tourData = [];
+        let name;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsDiv = document.getElementById('results');
+            const productDiv = document.querySelector(".div");
+
+            async function places(searchQuery) {
+                try {
+                    productDiv.innerHTML = ``;
+                    let product = await fetch(`https://freetestapi.com/api/v1/destinations?search=${searchQuery}`);
+                    let finalProduct = await product.json();
+                    console.log(finalProduct);
+                    finalProduct.forEach(dest => {
+                        productDiv.innerHTML += `
+                            <div class="container">
+                                <div class="box1">
+                                    <img src="${dest.image}" alt="">
+                                </div>
+                                <div class="box1" id="box2">
+                                    <h3>${dest.name} | ${dest.country}</h3>
+                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                                    <h4 class="sub-heading">About :</h4>
+                                    <p>${dest.description}</p>
+                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="box1">
+                                    <h4>Best time to visit :</h4><p>${dest.best_time_to_visit}</p>
+                                    <h4>Tourists Places :</h4><p>${dest.top_attractions}</p>
+                                    <h4>What you experience :</h4><p>${dest.activities}</p>
+                                    <h4>Popular dishes :</h4><p>${dest.local_dishes}</p>
+                                    <h4>Their language and currency :</h4>
+                                    <p>${dest.language} | ${dest.currency}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } catch (error) {
+                    console.error('Error fetching or parsing data:', error);
+                }
+            }
+
+            function loadData() {
+                try {
+                    const storedData = localStorage.getItem('tourPackages');
+                    if (storedData) {
+                        tourData = JSON.parse(storedData);
+                        console.log("Data loaded from localStorage", tourData);
+                        searchPlace();
+                    } else {
+                        console.error('No data found in localStorage');
+                    }
+                } catch (error) {
+                    console.error('Error loading data from localStorage:', error);
+                }
+            }
+
+            function loadLastSearchQuery() {
+                const searchQuery = localStorage.getItem('searchQuery');
+                if (searchQuery) {
+                    name = searchQuery;
+                    places(name);
+                }
+            }
+
+            function searchPlace() {
+                if (!name) return;
+                const place = name.toLowerCase();
+                const placeData = tourData.find(item => item.name.toLowerCase() === place);
+                console.log("place name is ", placeData);
+                if (placeData) {
+                    displayResults([placeData], place);
+                } else {
+                    resultsDiv.innerHTML = '<p>No results found for this place.</p>';
+                }
+            }
+
+            function displayResults(hotels, place) {
+                const resultsDiv = document.getElementById('resultsDiv');
+                resultsDiv.innerHTML = '';
+                hotels.forEach((hotel, index) => {
+                    const hotelCard = document.createElement('div');
+                    hotelCard.classList.add('hotel-card');
+                    hotelCard.innerHTML = `
+                        <h2><a href="package.html?id=${index}">${hotel.name}</a></h2>
+                        <p>Price: $${hotel.price}</p>
+                        <p>Description: ${hotel.description}</p>
+                        <p><img src="${hotel.image}" alt="${hotel.name}" style="max-width:100px;"></p>
+                        <p>Best Time to Visit: ${hotel.best_time_to_vist}</p>
+                        <p>Top Attractions: ${hotel.top_attraction}</p>
+                        <p>Activities: ${hotel.activities}</p>
+                        <p>Local Dishes: ${hotel.local_dishes}</p>
+                        <p>Language: ${hotel.language}</p>
+                        <p>Currency: ${hotel.currency}</p>
                     `;
                     resultsDiv.appendChild(hotelCard);
                 });

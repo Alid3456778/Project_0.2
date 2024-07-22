@@ -20,6 +20,17 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
+app.get('/fake', (req, res) => {
+    fs.readFile('dummy.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error reading file');
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
 // Add a new package
 app.post('/admin', (req, res) => {
     const { name, descp, price, pic,best_time_to_vist,top_attraction,activities,local_dishes,language,currency } = req.body;
@@ -37,6 +48,7 @@ app.post('/admin', (req, res) => {
         currency:currency  
     };
 
+   
     fs.readFile('dummy.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
@@ -51,6 +63,8 @@ app.post('/admin', (req, res) => {
         }
         
         jsonData.push(newData);
+
+        
 
         fs.writeFile('dummy.json', JSON.stringify(jsonData, null, 2), (err) => {
             if (err) {
