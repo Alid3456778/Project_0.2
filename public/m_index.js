@@ -15,6 +15,7 @@ scroller.on('scroll', (scrollArgs) => {
     body.style.backgroundColor = '#ffffff'; // Change to default color
     body.style.color = 'black'
   }
+
 });
 
 

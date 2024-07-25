@@ -12,6 +12,18 @@
     "currency": "ruppes"
   },
   {
+    "name": "mumbai",
+    "description": "Enjoy maratha feel",
+    "price": "30000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
     "name": "pune",
     "description": "Enjoy maratha feel",
     "price": "20000",
@@ -26,6 +38,18 @@
   {
     "name": "new york",
     "description": "Enjoy maratha feel",
+    "price": "890000",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
+    "name": "maharashtra",
+    "description": "Enjoy maratha feel",
     "price": "20000",
     "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
     "best_time_to_vist": "now",
@@ -34,6 +58,41 @@
     "local_dishes": "misal pav, pav bhaji, badapav",
     "language": "marathi,hindi",
     "currency": "ruppes"
+  },
+  {
+    "name": "paris",
+    "description": "Enjoy maratha feel",
+    "price": "34000034",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "ruppes"
+  },
+  {
+    "name": "tokyo",
+    "description": "Enjoy maratha feel",
+    "price": "34000034",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "yen yon"
+  },
+  {
+    "name": "tokyo",
+    "description": "tkoyp wale vide dara hay yass",
+    "price": "34000034",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "yen yon"
   }
-
 ]

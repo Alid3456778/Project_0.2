@@ -1,4 +1,4 @@
- <!-- <!DOCTYPE html>
+ <!-- <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
 </body>
 </html> 
 
- -->
+
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -75,7 +75,7 @@
  
          function displayPackageDetails() {
              const { id } = getQueryParams();
-             const hotels = JSON.parse(localStorage.getItem('hotels'));
+             const hotels = JSON.parse(localStorage.getItem('tourPackages'));
              const hotel = hotels[id];
              const packageDetailsDiv = document.getElementById('packageDetails');
              
@@ -129,4 +129,109 @@
      </script>
  </body>
  </html>
- 
+  <!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Package Details</title>
+    </head>
+    <body>
+        <div class="main">
+            <div id="packageDetails"></div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const packageDetailsDiv = document.getElementById('packageDetails');
+    
+                // Function to get query parameter from URL
+                function getQueryParam(param) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(param);
+                }
+    
+                // Function to display the package details
+                function displayPackageDetails(packageData) {
+                    packageDetailsDiv.innerHTML = `
+                        <h2>${packageData.name}</h2>
+                        <p>Price: ${packageData.price}</p>
+                        <p>Description: ${packageData.description}</p>
+                        <p><img src="${packageData.image}" alt="${packageData.name}" style="max-width:200px;"></p>
+                        <p>Best Time to Visit: ${packageData.best_time_to_vist}</p>
+                        <p>Top Attraction: ${packageData.top_attraction}</p>
+                        <p>Activities: ${packageData.activities}</p>
+                        <p>Local Dishes: ${packageData.local_dishes}</p>
+                        <p>Language: ${packageData.language}</p>
+                        <p>Currency: ${packageData.currency}</p>
+                    `;
+                }
+    
+                // Fetch package data from localStorage
+                const tourData = JSON.parse(localStorage.getItem('tourPackages'));
+                const uniqueId = getQueryParam('uniqueId');
+    
+                if (tourData && uniqueId !== null) {
+                    const [index, name] = uniqueId.split('_');
+                    const packageData = tourData.find(pkg => pkg.name.replace(/\s+/g, '') === name && tourData.indexOf(pkg) == index);
+                    if (packageData) {
+                        displayPackageDetails(packageData);
+                    } else {
+                        packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';
+                    }
+                } else {
+                    packageDetailsDiv.innerHTML = '<p>Error loading package details.</p>';
+                }
+            });
+        </script>
+    </body>
+    </html> -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Details</title>
+    <style>
+        .package-details { border: 1px solid #ddd; padding: 20px; margin: 20px; }
+        .package-details img { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="packageDetails"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageName = urlParams.get('name');
+            const packagePrice = urlParams.get('price');
+            const packagediscription = urlParams.get('description');
+
+            const tourData = JSON.parse(localStorage.getItem('tourPackages'));
+            const packageDetails = tourData.find(pkg => pkg.name === packageName && pkg.price === packagePrice && pkg.description === packagediscription);
+
+            const packageDetailsDiv = document.getElementById('packageDetails');
+
+            if (packageDetails) {
+                packageDetailsDiv.innerHTML = `
+                    <h1>${packageDetails.name}</h1>
+                    <p>Price: ${packageDetails.price}</p>
+                    <p>Description: ${packageDetails.description}</p>
+                    <p><img src="${packageDetails.image}" alt="${packageDetails.name}"></p>
+                    <p>Best Time to Visit: ${packageDetails.best_time_to_vist}</p>
+                    <p>Top Attraction: ${packageDetails.top_attraction}</p>
+                    <p>Activities: ${packageDetails.activities}</p>
+                    <p>Local Dishes: ${packageDetails.local_dishes}</p>
+                    <p>Language: ${packageDetails.language}</p>
+                    <p>Currency: ${packageDetails.currency}</p>
+                `;
+            } else {
+                packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+
+    
