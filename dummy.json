@@ -94,5 +94,17 @@
     "local_dishes": "misal pav, pav bhaji, badapav",
     "language": "marathi,hindi",
     "currency": "yen yon"
+  },
+  {
+    "name": "maharashtra",
+    "description": "only marathi",
+    "price": "234555",
+    "image": "moo.img",
+    "best_time_to_vist": "now",
+    "top_attraction": "FC Road",
+    "activities": "only see",
+    "local_dishes": "wada paw , poranpoli",
+    "language": "hindi",
+    "currency": "ruppes"
   }
 ]

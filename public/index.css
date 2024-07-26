@@ -589,7 +589,7 @@ transform: translateX(0);
     justify-content: center;
     align-items: center;
     color: black;
-    
+    width: 100%;
 }
 
 .form-set{
@@ -618,13 +618,29 @@ transform: translateX(0);
     border-radius:50px ;
     font-size: 15px;
     font-family: "Poppins", sans-serif;
+    border: black 2px solid;
+    background-color: whit;
 }
+
+
 
 .search-wala-section{
     font-size: 100px;
-    
+    border-right: 10px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(12)  infinite alternate,
+                cursor .4s step-end infinite alternate;
 }
 
+@keyframes cursor {
+    50%{border-color: transparent}
+}
+@keyframes typing {
+    30% { width: 0 }
+    60% { width: 100% }
+}
 
 .next{
     height: 2000px;
@@ -632,81 +648,40 @@ transform: translateX(0);
 }
 
 .site-footer {
-    background-color: #333333;
-    color: #ffffff;
+    background: white;
     padding-top: 40px;
     padding-bottom: 40px;
-    /* border-top-left-radius: 50% 20%; 
-    border-top-right-radius: 50% 20%;  */
+  
 }
 
-.site-footer-top {
-    border-bottom: 1px solid #555555;
-    padding-bottom: 40px;
-}
-
-.site-footer-top-logo {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.site-footer-top-logo img {
-    width: 120px;
-    height: auto;
-}
-
-.site-footer-top-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.site-footer-top-nav ul li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.site-footer-top-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: #4d4d4d;
-    transition: background-color 0.3s;
-}
-
-.site-footer-top-nav ul li a:hover {
-    background-color: #ffffff;
-    color: #333333;
-}
 
 .site-footer-bottom {
-    padding-top: 40px;
-    text-align: center;
+   
+   text-align: center;
+    
 }
-
-.site-footer-bottom-copyright {
-    margin-bottom: 20px;
+.site-footer-bottom hr{
+    border: 2px black solid;
 }
 
 .site-footer-bottom-social {
+    margin-top: 20px;
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
     font-size: 0;
-    margin-left: -10px;
+   
     
 }
 
+
 .site-footer-bottom-social li {
-    margin-left: 10px;
+  
     display: inline-block;
     font-size: 20px;
     line-height: 1
+    
 }
 .site-footer-bottom-social li a{
+    margin: 20px;
     text-decoration: none;
-    color: white;
+    
 }

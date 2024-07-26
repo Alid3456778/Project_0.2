@@ -1,0 +1,15 @@
+*{
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.5s ease;
+    text-decoration: none;
+}
+.div{
+    background-color: blue;
+
+}
+
+
+.box1 img{
+    width: 80%;
+    height: 80vh;
+}
