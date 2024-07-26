@@ -1,204 +1,32 @@
- <!-- <!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Package Details</title>
-    <link rel="stylesheet" href="prototype.css">
-</head>
-<body>
-    <div id="package-details"></div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const packageName = params.get('name');
-            
-            if (packageName) {
-                const storedData = localStorage.getItem('tourData');
-                if (storedData) {
-                    const tourData = JSON.parse(storedData);
-                    const packageData = tourData[packageName.toLowerCase()];
-                    
-                    if (packageData) {
-                        const detailsDiv = document.getElementById('package-details');
-                        detailsDiv.innerHTML = `
-                            <h1>${packageData.name}</h1>
-                            <p>Price: $${packageData.price}</p>
-                            <p>Description: ${packageData.description}</p>
-                            <p>Best time to visit: ${packageData.best_time_to_visit}</p>
-                            <p>Top attractions: ${packageData.top_attractions}</p>
-                            <p>Activities: ${packageData.activities}</p>
-                            <p>Local dishes: ${packageData.local_dishes}</p>
-                            <p>Language: ${packageData.language}</p>
-                            <p>Currency: ${packageData.currency}</p>
-                        `;
-                    } else {
-                        document.getElementById('package-details').innerHTML = '<p>Package not found.</p>';
-                    }
-                }
-            } else {
-                document.getElementById('package-details').innerHTML = '<p>No package selected.</p>';
-            }
-        });
-    </script>
-</body>
-</html> 
-
-
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Package Details</title>
-     <style>
-         .top-attraction, .local-dish {
-             margin-bottom: 10px;
-         }
-         .top-attraction img, .local-dish img {
-             width: 100px;
-             height: 100px;
-         }
-     </style>
- </head>
- <body>
-     <div id="packageDetails"></div>
  
-     <script>
-         function getQueryParams() {
-             const params = new URLSearchParams(window.location.search);
-             return {
-                 id: params.get('id')
-             };
-         }
- 
-         function displayPackageDetails() {
-             const { id } = getQueryParams();
-             const hotels = JSON.parse(localStorage.getItem('tourPackages'));
-             const hotel = hotels[id];
-             const packageDetailsDiv = document.getElementById('packageDetails');
-             
-             const topAttractions = hotel.top_attraction.map(attraction => `
-                 <div class="top-attraction">
-                     <h4>${attraction.name}</h4>
-                     <img src="${attraction.image}" alt="${attraction.name}">
-                 </div>
-             `).join('');
- 
-             const localDishes = hotel.local_dishes.map(dish => `
-                 <div class="local-dish">
-                     <h4>${dish.name}</h4>
-                     <img src="${dish.image}" alt="${dish.name}">
-                 </div>
-             `).join('');
- 
-             packageDetailsDiv.innerHTML = `<div class="container">
-                                <div class="box1">
-                                    <img src="${hotel.image}" alt="${hotel.name}">
-                                </div>
-                                <div class="box2">
-                                    <h3>${hotel.name}</h3>
-                                    <p><strong>Price:</strong> $${hotel.price}</p>
-                                    <p><strong>Description:</strong> ${hotel.description}</p>
-                                    <p><strong>Best time to visit:</strong> ${hotel.best_time_to_visit}</p>
-                                    <h4>Top Attractions:</h4>
-                                    <ul>
-                                        ${hotel.top_attraction.map(attraction => `<li>${attraction}</li>`).join('')}
-                                    </ul>
-                                    <h4>Activities:</h4>
-                                    <ul>
-                                        ${hotel.activities.map(activity => `<li>${activity}</li>`).join('')}
-                                    </ul>
-                                    <h4>Local Dishes:</h4>
-                                    <ul>
-                                        ${hotel.local_dishes.map(dish => `<li>${dish}</li>`).join('')}
-                                    </ul>
-                                    <p><strong>Language:</strong> ${hotel.language}</p>
-                                    <p><strong>Currency:</strong> ${hotel.currency}</p>
-                                    <h4>Days:</h4>
-                                    <ul>
-                                        ${hotel.days.map(day => `<li>Day ${day.day}: ${day.schedule}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            </div>`;
-         }
- 
-         // Call the function to display the package details
-         displayPackageDetails();
-     </script>
- </body>
- </html>
-  <!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Package Details</title>
-    </head>
-    <body>
-        <div class="main">
-            <div id="packageDetails"></div>
-        </div>
-    
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const packageDetailsDiv = document.getElementById('packageDetails');
-    
-                // Function to get query parameter from URL
-                function getQueryParam(param) {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    return urlParams.get(param);
-                }
-    
-                // Function to display the package details
-                function displayPackageDetails(packageData) {
-                    packageDetailsDiv.innerHTML = `
-                        <h2>${packageData.name}</h2>
-                        <p>Price: ${packageData.price}</p>
-                        <p>Description: ${packageData.description}</p>
-                        <p><img src="${packageData.image}" alt="${packageData.name}" style="max-width:200px;"></p>
-                        <p>Best Time to Visit: ${packageData.best_time_to_vist}</p>
-                        <p>Top Attraction: ${packageData.top_attraction}</p>
-                        <p>Activities: ${packageData.activities}</p>
-                        <p>Local Dishes: ${packageData.local_dishes}</p>
-                        <p>Language: ${packageData.language}</p>
-                        <p>Currency: ${packageData.currency}</p>
-                    `;
-                }
-    
-                // Fetch package data from localStorage
-                const tourData = JSON.parse(localStorage.getItem('tourPackages'));
-                const uniqueId = getQueryParam('uniqueId');
-    
-                if (tourData && uniqueId !== null) {
-                    const [index, name] = uniqueId.split('_');
-                    const packageData = tourData.find(pkg => pkg.name.replace(/\s+/g, '') === name && tourData.indexOf(pkg) == index);
-                    if (packageData) {
-                        displayPackageDetails(packageData);
-                    } else {
-                        packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';
-                    }
-                } else {
-                    packageDetailsDiv.innerHTML = '<p>Error loading package details.</p>';
-                }
-            });
-        </script>
-    </body>
-    </html> -->
 
     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Package Details</title>
-    <style>
-        .package-details { border: 1px solid #ddd; padding: 20px; margin: 20px; }
-        .package-details img { max-width: 100%; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,500;1,400&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,500;1,400&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="CSS/package.css">                                                   
+
 </head>
 <body>
     <div class="main">
         <div id="packageDetails"></div>
+    </div>
+    <div class="inform">
+        <form action="" method="post">  
+            i
+        </form>
     </div>
 
     <script>
@@ -215,10 +43,12 @@
 
             if (packageDetails) {
                 packageDetailsDiv.innerHTML = `
+                <div class="head">
+                    <img src="${packageDetails.image}" alt="${packageDetails.name}">
                     <h1>${packageDetails.name}</h1>
+                </div>
                     <p>Price: ${packageDetails.price}</p>
                     <p>Description: ${packageDetails.description}</p>
-                    <p><img src="${packageDetails.image}" alt="${packageDetails.name}"></p>
                     <p>Best Time to Visit: ${packageDetails.best_time_to_vist}</p>
                     <p>Top Attraction: ${packageDetails.top_attraction}</p>
                     <p>Activities: ${packageDetails.activities}</p>

@@ -1,15 +1,116 @@
-*{
-    font-family: "Poppins", sans-serif;
-    transition: background-color 0.5s ease;
-    text-decoration: none;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+*
+{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+   
 }
-.div{
-    background-color: blue;
-
+.main
+{
+    min-height: 100vh;
+    /*background:linear-gradient(#2b1055,#7597de);*/
+    
+    width: 100%;
+    background-color: #fff;
+    
+    margin-left: 160px;
+    margin-right: 160px;
+    margin-top: 70px;
 }
 
-
-.box1 img{
+.container{
+    display: flex;
+    justify-content: space-between;
+    height: 700px;
     width: 80%;
-    height: 80vh;
+}
+.box1{
+    width: 100px;
+}
+.box1 img{
+    width: 500px;
+    border-radius: 20px;
+    height: 600px;
+}
+
+#box2{
+    /* padding: 40px;
+    margin-top: 110px;
+    margin-right: 160px; */
+    width: 400px;
+    height: 500px;
+}
+#box2 h3{
+    font-weight: 900;
+    font-size: 50px;
+    text-decoration: solid;
+    text-transform: uppercase;
+    font-family: 'Merriweather', serif;
+
+}
+#box2 hr{
+    margin-bottom: 5px;
+}
+.sub-heading{
+    margin-top: 20px;
+  
+}
+#box2 p{
+    margin-bottom: 20px;
+}
+
+.pack-pack{
+    margin-left: 43%;
+}
+
+.container2{
+    /* background-color: blue; */
+    
+    /* display: flex;
+   justify-content: right; */
+    width: 40%;
+    
+    position: absolute;
+    border-right: 1px black solid;
+}
+.container2-box {
+width: 90%;
+
+padding: 10px;
+margin: 5px;
+border: 1.5px black solid;
+border-radius: 15px;
+}
+.container2-box:hover{
+    background-color: rgba(172, 172, 172, 0.692);
+    border: 1.5px rgba(172, 172, 172, 0.692) solid;
+}
+
+
+.result{
+    width: 40%;
+    /* margin-right: 100px ; */
+    margin-left: 43%;
+    display: flex;
+    /* justify-content: end;
+    align-items: center; */
+    border: 1px black solid;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+}
+
+.result-img img{
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+footer{
+    margin-top: 300px;
 }

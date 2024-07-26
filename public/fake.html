@@ -11,13 +11,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,500;1,400&display=swap"
-        rel="stylesheet">
+        rel="stylesheet">                                                   
         <link rel="stylesheet" href="CSS/fake.css">
+        <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <nav>
+        <div class="Logo">Explo</div>
+        <div class="menu">
+            <a href="login-sigin/login.html">MA</a>
+            <a href="admin.html">Sg</a>
+        </div>
+    </nav>
     <div class="main">
         <div class="div" id="resultsDiv"></div>
-        <div id="results"></div>
+        <div id="results">
+        </div>
     </div>
 
     <script>
@@ -36,28 +45,38 @@
                     console.log("Api wala ",finalProduct);
                     finalProduct.forEach(dest => {
                         productDiv.innerHTML += `
+                        <div class="cons">
                             <div class="container">
                                 <div class="box1">
                                     <img src="${dest.image}" alt="">
                                 </div>
-                                <div class="box1" id="box2">
-                                    <h3>${dest.name} | ${dest.country}</h3>
-                                    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                                <div  id="box2">
+                                     <h3>${dest.name} | ${dest.country}</h3>
+                                    
                                     <h4 class="sub-heading">About :</h4>
                                     <p>${dest.description}</p>
                                     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
                                 </div>
                             </div>
-                            <div class="container">
-                                <div class="box1">
+                            <div class="container2">
+                                <div class="container2-box">
                                     <h4>Best time to visit :</h4><p>${dest.best_time_to_visit}</p>
-                                    <h4>Tourists Places :</h4><p>${dest.top_attractions}</p>
-                                    <h4>What you experience :</h4><p>${dest.activities}</p>
-                                    <h4>Popular dishes :</h4><p>${dest.local_dishes}</p>
-                                    <h4>Their language and currency :</h4>
-                                    <p>${dest.language} | ${dest.currency}</p>
+                                    </div>
+                                  <div class="container2-box"><h4>Tourists Places :</h4><p>${dest.top_attractions}</p>  </div>
+                                   <div class="container2-box">   <h4>What you experience :</h4><p>${dest.activities}</p> </div>
+                                    <div class="container2-box"> <h4>Popular dishes :</h4><p>${dest.local_dishes}</p>  </div>
+                                     <div class="container2-box"> <h4>Their language and currency :</h4>
+                                    <p>${dest.language} | ${dest.currency}</p>  
                                 </div>
+                                    
+                                    
+                                  
+                                   
+                                   
+                               
                             </div>
+                            
+                        </div
                         `;
                     });
                 } catch (error) {
@@ -104,23 +123,29 @@
             function displayResults(packages) {
                 
                 const resultsDiv = document.getElementById('results');
-                resultsDiv.innerHTML = '';
+                resultsDiv.innerHTML = `<h2 class="pack-pack">Packages : </h2>`;
                 packages.forEach((package, index) => {
-                   
+                    
+
 
                     const packageCard = document.createElement('results');
                     packageCard.classList.add('package-card');
+
+
+
+
                     packageCard.innerHTML = `
-                        <h2><a href="package.html?name=${encodeURIComponent(package.name)}&price=${encodeURIComponent(package.price)}&description=${encodeURIComponent(package.description)}">${package.name}</a></h2>
-                        <p>Price: ${package.price}</p>
-                        <p>Description: ${package.description}</p>
-                        <p><img src="${package.image}" alt="${package.name}" style="max-width:200px;"></p>
-                        <p>Best Time to Visit: ${package.best_time_to_vist}</p>
-                        <p>Top Attraction: ${package.top_attraction}</p>
-                        <p>Activities: ${package.activities}</p>
-                        <p>Local Dishes: ${package.local_dishes}</p>
-                        <p>Language: ${package.language}</p>
-                        <p>Currency: ${package.currency}</p>
+                    <div class="result">
+                          <div class="result-img">
+                        <img src="${package.image}" alt="${package.name}" ">
+                        </div>
+                    <div class="resutl-text">
+                        <h2 class="result-head"><a href="package.html?name=${encodeURIComponent(package.name)}&price=${encodeURIComponent(package.price)}&description=${encodeURIComponent(package.description)}">${package.name}</a></h2>
+                        <p class="result-price">Price: ${package.price}</p>
+                        <p calss="result-descrip">Description: ${package.description}</p>
+                     </div>
+                   
+                        </div>
                     `;
                     resultsDiv.appendChild(packageCard);
                 });
@@ -130,5 +155,19 @@
             loadLastSearchQuery();
         });
     </script>
+    <footer class="site-footer" data-scroll-section>
+        <div class="site-footer-bottom">
+                        <hr>
+                        <div class="site-footer-bottom-social">
+                            <ul>
+                                <li><a href="#"><img width="50" height="50" src="https://img.icons8.com/ios/50/facebook-new.png" alt="facebook-new"/></a></li>
+                                <li><a href="#"><img width="50" height="50" src="https://img.icons8.com/ios/50/twitter--v1.png" alt="twitter--v1"/></a></li>
+                                <li><a href="#"><img width="50" height="50" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1"/></a></li>
+                                <li><a href="#"><img width="50" height="50" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin"/></a></li>
+                            </ul>
+                        </div>
+                    
+        </div>
+    </footer>
 </body>
 </html> 

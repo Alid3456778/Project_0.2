@@ -106,5 +106,17 @@
     "local_dishes": "wada paw , poranpoli",
     "language": "hindi",
     "currency": "ruppes"
+  },
+  {
+    "name": "mumbai",
+    "description": "Enjoy maratha feel",
+    "price": "1222334",
+    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
+    "best_time_to_vist": "now",
+    "top_attraction": "pune",
+    "activities": "mc stan, poona college",
+    "local_dishes": "misal pav, pav bhaji, badapav",
+    "language": "marathi,hindi",
+    "currency": "yen yon"
   }
 ]
