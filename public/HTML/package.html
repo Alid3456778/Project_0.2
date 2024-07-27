@@ -16,7 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,500;1,400&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="CSS/package.css">                                                   
+        <link rel="stylesheet" href="../CSS/package.css">                                                   
 
 </head>
 <body>
@@ -25,7 +25,11 @@
     </div>
     <div class="inform">
         <form action="" method="post">  
-            i
+            <input type="text" placeholder="Enter Your Name">
+            <input type="email" name="email" placeholder="Enter Your Email" id="">
+            <input type="number" name="number" placeholder="Enter Your Number">
+            <input type="number" name="people" placeholder="Enter the Number Of People">
+            <button type="submit">Submit</button>
         </form>
     </div>
 
@@ -47,14 +51,40 @@
                     <img src="${packageDetails.image}" alt="${packageDetails.name}">
                     <h1>${packageDetails.name}</h1>
                 </div>
-                    <p>Price: ${packageDetails.price}</p>
-                    <p>Description: ${packageDetails.description}</p>
-                    <p>Best Time to Visit: ${packageDetails.best_time_to_vist}</p>
-                    <p>Top Attraction: ${packageDetails.top_attraction}</p>
-                    <p>Activities: ${packageDetails.activities}</p>
-                    <p>Local Dishes: ${packageDetails.local_dishes}</p>
-                    <p>Language: ${packageDetails.language}</p>
-                    <p>Currency: ${packageDetails.currency}</p>
+                <div class="second-section">
+                    <div class="scetion">
+                    <h4>Price: </h4>
+                    <p>${packageDetails.price}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Description: </h4>
+                    <p> ${packageDetails.description}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Best Time to Visit: </h4>
+                    <p>${packageDetails.best_time_to_vist}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Top Attraction: </h4>
+                    <p>${packageDetails.top_attraction}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Activities: </h4>
+                    <p>${packageDetails.activities}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Local Dishes: </h4>
+                    <p>${packageDetails.local_dishes}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Language: </h4>
+                    <p>${packageDetails.language}</p>
+                    </div>
+                    <div class="scetion">
+                    <h4>Currency: </h4>
+                    <p>${packageDetails.currency}</p>
+                    </div>
+                </div>
                 `;
             } else {
                 packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';

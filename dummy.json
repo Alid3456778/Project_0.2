@@ -1,41 +1,5 @@
 [
   {
-    "name": "mumbai",
-    "description": "Enjoy maratha feel",
-    "price": "20000",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
-    "name": "mumbai",
-    "description": "Enjoy maratha feel",
-    "price": "30000",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
-    "name": "pune",
-    "description": "Enjoy maratha feel",
-    "price": "20000",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
     "name": "new york",
     "description": "Enjoy maratha feel",
     "price": "890000",
@@ -45,66 +9,6 @@
     "activities": "mc stan, poona college",
     "local_dishes": "misal pav, pav bhaji, badapav",
     "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
-    "name": "maharashtra",
-    "description": "Enjoy maratha feel",
-    "price": "20000",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
-    "name": "paris",
-    "description": "Enjoy maratha feel",
-    "price": "34000034",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "ruppes"
-  },
-  {
-    "name": "tokyo",
-    "description": "Enjoy maratha feel",
-    "price": "34000034",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "yen yon"
-  },
-  {
-    "name": "tokyo",
-    "description": "tkoyp wale vide dara hay yass",
-    "price": "34000034",
-    "image": "https://th.bing.com/th/id/OIP.F-HfGyEyUbXPCE-k8aVjtAHaE9?w=239&h=180&c=7&r=0&o=5&pid=1.7",
-    "best_time_to_vist": "now",
-    "top_attraction": "pune",
-    "activities": "mc stan, poona college",
-    "local_dishes": "misal pav, pav bhaji, badapav",
-    "language": "marathi,hindi",
-    "currency": "yen yon"
-  },
-  {
-    "name": "maharashtra",
-    "description": "only marathi",
-    "price": "234555",
-    "image": "moo.img",
-    "best_time_to_vist": "now",
-    "top_attraction": "FC Road",
-    "activities": "only see",
-    "local_dishes": "wada paw , poranpoli",
-    "language": "hindi",
     "currency": "ruppes"
   },
   {
@@ -118,5 +22,17 @@
     "local_dishes": "misal pav, pav bhaji, badapav",
     "language": "marathi,hindi",
     "currency": "yen yon"
+  },
+  {
+    "name": "Parbhani",
+    "description": "Enjoy and Bhanbhani wit#",
+    "price": "40000",
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsJCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAC0ARkDASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAQADBAUGAgf/xABJEAACAQMDAQUEBwQHBgQHAAABAgMABBEFEiExBhMiQVEUYXGBIzJCUpGhsRUkwdEWM2JykuHwB1OTotLxJTRUgkRjZJSz0+L/xAAbAQABBQEBAAAAAAAAAAAAAAACAQMEBQYAB//EADURAAIBAgUCAwYEBwEBAAAAAAABAgMRBAUSITETQQZRcSIyYYGRoRQVscEkNUJS0eHwU/H/2gAMAwEAAhEDEQA/ANYScnk9aHPrR8z8aXxq3KkBz6mhk+po4pYFFcRgyQOtLJIPJo4FDAokNtWBk0ufWjililuIDn1NDn1NdYpUqdgbHHPrR5rrApEUWoQ559aXi9a6pV10cc8+ppc+prqlg0tzjn5mjk+tHax8jR2P900jklyLZvg559aXPrXW3rkqPiwoYX76fj/lUeeKoQ96aXzQ7GhUlxF/QGT60cn1olTjOQR6ggiuafjOM1eLuhtxcXaSsLJ9aGT76NECiuIDJz50cn1o4pYoWwgDPqaWT60cUsUIoMt60sn30cUsCuEBk+ppZPrXWBQIFIEgEnyojPrQxRpArWCOPOjuHqa4pYoWGjojk/GiAT0BPwoE8n413HK0e7CqdwA5zwRnB4PvoWIrdzkq/mrenQ9RS2P5qw+IIqQbuVuqp0IBw3BORnr5Zx/2om6cnOxMhlYZ3HoQeefUA0OqXkLaPmRSrZAAOT0GOTR2OMZRxnplSM/lTxnJkik2I",
+    "best_time_to_vist": "never",
+    "top_attraction": "dargha road, dhar road, garden",
+    "activities": "eat repeat sleep",
+    "local_dishes": "moen ki tahari, biryani",
+    "language": "marathi",
+    "currency": "INR"
   }
 ]

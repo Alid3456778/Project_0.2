@@ -79,12 +79,64 @@ app.post('/admin', (req, res) => {
 // Delete a package by package name
 
 // Delete a package by package name
-app.post('/delete', (req, res) => {
+// app.post('/delete', (req, res) => {
+//     const { packageName } = req.body;
+
+//     if (!packageName) {
+//         return res.status(400).send('Package name is required');
+//     }
+
+//     console.log('Received packageName:', packageName); // Log the incoming packageName
+
+//     fs.readFile('dummy.json', 'utf8', (err, data) => {
+//         if (err) {
+//             console.error('Error reading file:', err);
+//             return res.status(500).send('Error reading file');
+//         }
+
+//         let jsonData;
+//         try {
+//             jsonData = JSON.parse(data);
+//         } catch (parseError) {
+//             console.error('Error parsing JSON data:', parseError);
+//             return res.status(500).send('Error parsing JSON data');
+//         }
+
+//         console.log('Current JSON data:', jsonData); // Log the content of JSON file
+
+//         // Filter out the objects with the given name
+//         const filteredData = jsonData.filter(item => item.name !== packageName);
+
+//         if (filteredData.length === jsonData.length) {
+//             // No matching package found
+//             return res.status(404).send('Package not found');
+//         }
+
+//         fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
+//             if (err) {
+//                 console.error('Error writing file:', err);
+//                 return res.status(500).send('Error writing file');
+//             }
+//             res.send('Data deleted successfully');
+//         });
+//     });
+// });
+app.get('/search', (req, res) => {
+    res.render('search', { packages: [], message: null });
+});
+
+app.post('/search', (req, res) => {
     const { packageName } = req.body;
+
+    if (!packageName) {
+        return res.status(400).send('Package name is required');
+    }
+
+    console.log('Received packageName for search:', packageName);
 
     fs.readFile('dummy.json', 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
+            console.error('Error reading file:', err);
             return res.status(500).send('Error reading file');
         }
 
@@ -92,27 +144,60 @@ app.post('/delete', (req, res) => {
         try {
             jsonData = JSON.parse(data);
         } catch (parseError) {
-            console.error(parseError);
+            console.error('Error parsing JSON data:', parseError);
             return res.status(500).send('Error parsing JSON data');
         }
 
-        // Filter out the package with the given name
-        const updatedJsonData = jsonData.filter(item => item.package !== packageName);
+        // Find the packages with the given name
+        const matchingPackages = jsonData.filter(item => item.name === packageName);
 
-        if (updatedJsonData.length === jsonData.length) {
+        // Render the results using EJS with a message
+        res.render('search', { packages: matchingPackages, message: null });
+    });
+});
+
+app.post('/delete', (req, res) => {
+    const { packagePrice } = req.body;
+
+    if (!packagePrice) {
+        return res.status(400).send('Package price is required');
+    }
+
+    console.log('Received packagePrice for deletion:', packagePrice);
+
+    fs.readFile('dummy.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).send('Error reading file');
+        }
+
+        let jsonData;
+        try {
+            jsonData = JSON.parse(data);
+        } catch (parseError) {
+            console.error('Error parsing JSON data:', parseError);
+            return res.status(500).send('Error parsing JSON data');
+        }
+
+        // Filter out the objects with the given price
+        const filteredData = jsonData.filter(item => item.price !== packagePrice);
+
+        if (filteredData.length === jsonData.length) {
             // No matching package found
             return res.status(404).send('Package not found');
         }
 
-        fs.writeFile('dummy.json', JSON.stringify(updatedJsonData, null, 2), (err) => {
+        fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
             if (err) {
-                console.error(err);
+                console.error('Error writing file:', err);
                 return res.status(500).send('Error writing file');
             }
-            res.send('Data deleted successfully');
+            // Redirect back to the search page with a deletion success message
+            res.redirect('/search', '&message=deleted');
         });
     });
 });
+
 
 // Start the server
 app.listen(port, () => {
