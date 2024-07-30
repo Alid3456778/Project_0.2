@@ -8,6 +8,7 @@ document.getElementById('searchForm').addEventListener('submit', function (event
 
     // Save the search query to localStorage
     if (searchInput !== '') {
+        // localStorage.clear();
         localStorage.setItem('searchQuery', searchInput);
         window.location.href = 'fake.html'; // Redirect to the results page
     } else {

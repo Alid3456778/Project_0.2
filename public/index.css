@@ -346,7 +346,7 @@ nav {
    z-index: 100;
    opacity: 0;
    position: absolute;
-   top: 100px;
+   top: 30px;
     transition: opacity 0.5s ease;
     padding: 5px;
 }
@@ -493,7 +493,7 @@ transform: translateX(0);
 }
 .float-img-1{
     position: absolute;
-    background-image: url(pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg);
+    background-image: url("https://pin.it/1IcWhGQJy");
     top: 250px;
     left: 90px;
     height: 500px;

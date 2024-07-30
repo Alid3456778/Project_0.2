@@ -48,10 +48,10 @@
             if (packageDetails) {
                 packageDetailsDiv.innerHTML = `
                 <div class="head">
-                    <img src="${packageDetails.image}" alt="${packageDetails.name}">
                     <h1>${packageDetails.name}</h1>
+                    <img src="${packageDetails.image}" alt="${packageDetails.name}">
                 </div>
-                <div class="second-section">
+                <div class="second-section" class="main">
                     <div class="scetion">
                     <h4>Price: </h4>
                     <p>${packageDetails.price}</p>
@@ -85,6 +85,9 @@
                     <p>${packageDetails.currency}</p>
                     </div>
                 </div>
+                <div clas="third-section">
+
+                    </div>
                 `;
             } else {
                 packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';

@@ -72,6 +72,9 @@ app.post('/admin', (req, res) => {
                 return res.status(500).send('Error writing file');
             }
             res.send('Data saved successfully');
+            // alert('Sucesfull Adding Package');
+            // //window.location.href = "admin.html";
+        
         });
     });
 });
@@ -184,7 +187,8 @@ app.post('/delete', (req, res) => {
 
         if (filteredData.length === jsonData.length) {
             // No matching package found
-            return res.status(404).send('Package not found');
+            return res.status(404).send('Deleyed Sucesfully');
+            
         }
 
         fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {

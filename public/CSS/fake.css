@@ -20,7 +20,17 @@
     margin-right: 160px;
     margin-top: 70px;
 }
-
+nav {
+    padding-top: -2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12px;
+    width: 100%;
+    /* background-color: aqua; */
+    margin-bottom: 40px;
+    margin-top: 5px;
+}
 .container{
     display: flex;
     justify-content: space-between;
@@ -114,4 +124,42 @@ border-radius: 15px;
 
 footer{
     margin-top: 300px;
+}
+.site-footer {
+    background: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  
+}
+
+
+.site-footer-bottom {
+   
+   text-align: center;
+    
+}
+.site-footer-bottom hr{
+    border: 2px black solid;
+}
+
+.site-footer-bottom-social {
+    margin-top: 20px;
+    list-style: none;
+    font-size: 0;
+   
+    
+}
+
+
+.site-footer-bottom-social li {
+  
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1
+    
+}
+.site-footer-bottom-social li a{
+    margin: 20px;
+    text-decoration: none;
+    
 }
