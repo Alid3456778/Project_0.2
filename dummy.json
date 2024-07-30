@@ -12,18 +12,6 @@
     "currency": "ruppes"
   },
   {
-    "name": "Parbhani",
-    "description": "Enjoy and Bhanbhani wit#",
-    "price": "40000",
-    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsJCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAC0ARkDASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAQADBAUGAgf/xABJEAACAQMDAQUEBwQHBgQHAAABAgMABBEFEiExBhMiQVEUYXGBIzJCUpGhsRUkwdEWM2JykuHwB1OTotLxJTRUgkRjZJSz0+L/xAAbAQABBQEBAAAAAAAAAAAAAAACAQMEBQYAB//EADURAAIBAgUCAwYEBwEBAAAAAAABAgMRBAUSITETQQZRcSIyYYGRoRQVscEkNUJS0eHwU/H/2gAMAwEAAhEDEQA/ANYScnk9aHPrR8z8aXxq3KkBz6mhk+po4pYFFcRgyQOtLJIPJo4FDAokNtWBk0ufWjililuIDn1NDn1NdYpUqdgbHHPrR5rrApEUWoQ559aXi9a6pV10cc8+ppc+prqlg0tzjn5mjk+tHax8jR2P900jklyLZvg559aXPrXW3rkqPiwoYX76fj/lUeeKoQ96aXzQ7GhUlxF/QGT60cn1olTjOQR6ggiuafjOM1eLuhtxcXaSsLJ9aGT76NECiuIDJz50cn1o4pYoWwgDPqaWT60cUsUIoMt60sn30cUsCuEBk+ppZPrXWBQIFIEgEnyojPrQxRpArWCOPOjuHqa4pYoWGjojk/GiAT0BPwoE8n413HK0e7CqdwA5zwRnB4PvoWIrdzkq/mrenQ9RS2P5qw+IIqQbuVuqp0IBw3BORnr5Zx/2om6cnOxMhlYZ3HoQeefUA0OqXkLaPmRSrZAAOT0GOTR2OMZRxnplSM/lTxnJkik2I",
-    "best_time_to_vist": "never",
-    "top_attraction": "dargha road, dhar road, garden",
-    "activities": "eat repeat sleep",
-    "local_dishes": "moen ki tahari, biryani",
-    "language": "marathi",
-    "currency": "INR"
-  },
-  {
     "name": "mumbai",
     "description": "Enjoy and Bhanbhani wit#",
     "price": "2100",
@@ -48,33 +36,15 @@
     "currency": "INR"
   },
   {
-    "name": "Parbhani",
+    "name": "parbhani",
     "description": "Enjoy and Bhanbhani wit#",
-    "price": "40000",
-    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsJCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAC0ARkDASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAQADBAUGAgf/xABJEAACAQMDAQUEBwQHBgQHAAABAgMABBEFEiExBhMiQVEUYXGBIzJCUpGhsRUkwdEWM2JykuHwB1OTotLxJTRUgkRjZJSz0+L/xAAbAQABBQEBAAAAAAAAAAAAAAACAQMEBQYAB//EADURAAIBAgUCAwYEBwEBAAAAAAABAgMRBAUSITETQQZRcSIyYYGRoRQVscEkNUJS0eHwU/H/2gAMAwEAAhEDEQA/ANYScnk9aHPrR8z8aXxq3KkBz6mhk+po4pYFFcRgyQOtLJIPJo4FDAokNtWBk0ufWjililuIDn1NDn1NdYpUqdgbHHPrR5rrApEUWoQ559aXi9a6pV10cc8+ppc+prqlg0tzjn5mjk+tHax8jR2P900jklyLZvg559aXPrXW3rkqPiwoYX76fj/lUeeKoQ96aXzQ7GhUlxF/QGT60cn1olTjOQR6ggiuafjOM1eLuhtxcXaSsLJ9aGT76NECiuIDJz50cn1o4pYoWwgDPqaWT60cUsUIoMt60sn30cUsCuEBk+ppZPrXWBQIFIEgEnyojPrQxRpArWCOPOjuHqa4pYoWGjojk/GiAT0BPwoE8n413HK0e7CqdwA5zwRnB4PvoWIrdzkq/mrenQ9RS2P5qw+IIqQbuVuqp0IBw3BORnr5Zx/2om6cnOxMhlYZ3HoQeefUA0OqXkLaPmRSrZAAOT0GOTR2OMZRxnplSM/lTxnJkik2I",
+    "price": "47747",
+    "image": "https://pin.it/7CXkpQQRA",
     "best_time_to_vist": "never",
     "top_attraction": "dargha road, dhar road, garden",
     "activities": "eat repeat sleep",
     "local_dishes": "moen ki tahari, biryani",
     "language": "marathi",
-    "currency": "INR",
-    "itinerary": [
-      {
-        "day": "day1",
-        "description": "Explore local markets and historical sites",
-        "activities": ["Visit Dargha Road", "Explore Dhar Road", "Relax in the garden"]
-      },
-      {
-        "day": "day2",
-        "description": "Enjoy local cuisine and cultural performances",
-        "activities": ["Eat Moen ki Tahari", "Enjoy Biryani", "Attend local cultural show"]
-      },
-      {
-        "day": "day3",
-        "description": "Experience nature and relaxation",
-        "activities": ["Visit local parks", "Relax and unwind", "Enjoy scenic views"]
-      }
-    ]
+    "currency": "INR"
   }
-  
 ]

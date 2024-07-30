@@ -150,7 +150,7 @@ app.post('/search', (req, res) => {
             console.error('Error parsing JSON data:', parseError);
             return res.status(500).send('Error parsing JSON data');
         }
-
+        
         // Find the packages with the given name
         const matchingPackages = jsonData.filter(item => item.name === packageName);
 
@@ -184,7 +184,7 @@ app.post('/delete', (req, res) => {
 
         // Filter out the objects with the given price
         const filteredData = jsonData.filter(item => item.price !== packagePrice);
-
+        
         if (filteredData.length === jsonData.length) {
             // No matching package found
             return res.status(404).send('Deleyed Sucesfully');

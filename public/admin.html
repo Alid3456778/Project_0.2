@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Packages Admin</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1 { text-align: center; }
-        form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        input, button { padding: 5px; }
-        ul { list-style-type: none; padding: 0; }
-        li { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .package-details { flex-grow: 1; }
-    </style>
+   
+    <link rel="stylesheet" href="/CSS/admin.css">
 </head>
 <body>
+    <div class="container">
     <h1>Tour Packages Admin Panel</h1>
     
     <form id="addPackageForm" action="/admin" method="post">
@@ -46,77 +40,8 @@
     <h2>Packages List</h2>
     <ul id="packagesList"></ul>
 
-    <!-- <script>
-        const addPackageForm = document.getElementById('addPackageForm');
-        const packagesList = document.getElementById('packagesList');
-
-        // Function to fetch and display packages
-        function fetchPackages() {
-            fetch('/api/packages')
-                .then(response => response.json())
-                .then(data => {
-                    packagesList.innerHTML = '';
-                    data.forEach(package => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `
-                            <div class="package-details">
-                                <strong>${package.name}</strong> - $${package.price}<br>
-                                <small>${package.description}</small>
-                            </div>
-                            <button onclick="deletePackage(${package.id})">Delete</button>
-                        `;
-                        packagesList.appendChild(li);
-                    });
-                });
-        }
-
-        // Function to add a new package
-        addPackageForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const newPackage = {
-                id: parseInt(document.getElementById('id').value),
-                name: document.getElementById('name').value,
-                description: document.getElementById('description').value,
-                price: parseFloat(document.getElementById('price').value)
-            };
-
-            fetch('/api/packages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newPackage),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                fetchPackages();
-                addPackageForm.reset();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        });
-
-        // Function to delete a package
-        function deletePackage(id) {
-            fetch(`/api/packages/${id}`, {
-                method: 'DELETE',
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                fetchPackages();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-
-        // Initial fetch of packages
-        fetchPackages();
-    </script> -->
-<script>
+</div>
+  <script>
     
 </script>
 

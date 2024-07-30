@@ -42,7 +42,7 @@
 
             const tourData = JSON.parse(localStorage.getItem('tourPackages'));
             const packageDetails = tourData.find(pkg => pkg.name === packageName && pkg.price === packagePrice && pkg.description === packagediscription);
-
+            console.log(packageDetails);
             const packageDetailsDiv = document.getElementById('packageDetails');
 
             if (packageDetails) {
