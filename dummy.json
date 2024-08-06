@@ -46,5 +46,17 @@
     "local_dishes": "moen ki tahari, biryani",
     "language": "marathi",
     "currency": "INR"
+  },
+  {
+    "name": "mumbai",
+    "description": "nice place",
+    "price": "40000",
+    "image": "https://wallpapercave.com/wp/wp4646412.jpg",
+    "best_time_to_vist": "now",
+    "top_attraction": "taj hotel",
+    "activities": "gali ghumu",
+    "local_dishes": "vada paw",
+    "language": "marathi , hindi ",
+    "currency": "rs"
   }
 ]
