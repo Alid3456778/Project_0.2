@@ -166,17 +166,13 @@ h1 {
                         <h2><%= item.name %></h2>
                         <p><strong>Description:</strong> <%= item.description %></p>
                         <p><strong>Price:</strong> <%= item.price %></p>
-                        <p><strong>Best Time to Visit:</strong> <%= item.best_time_to_vist %></p>
-                        <p><strong>Top Attraction:</strong> <%= item.top_attraction %></p>
-                        <p><strong>Activities:</strong> <%= item.activities %></p>
-                        <p><strong>Local Dishes:</strong> <%= item.local_dishes %></p>
                         <p><strong>Language:</strong> <%= item.language %></p>
                         <p><strong>Currency:</strong> <%= item.currency %></p>
                         <img src="<%= item.image %>" alt="<%= item.name %>" style="width: 100px; height: auto;">
-                        <!-- <form action="/delete" method="post" style="position: absolute; right: 0; top: 0;">
+                        <form action="/delete" method="post" style="position: absolute; right: 0; top: 0;">
                             <input type="hidden" name="packagePrice" value="<%= item.price %>">
                             <button type="submit" class="delete-button">Delete</button>
-                        </form> -->
+                        </form>
                         
                     </div>
                 <% }); %>

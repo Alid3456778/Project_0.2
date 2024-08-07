@@ -13,27 +13,15 @@
   },
   {
     "name": "mumbai",
-    "description": "Enjoy and Bhanbhani wit#",
-    "price": "2100",
-    "image": "https://pin.it/7CXkpQQRA",
-    "best_time_to_vist": "never",
-    "top_attraction": "dargha road, dhar road, garden",
-    "activities": "eat repeat sleep",
-    "local_dishes": "moen ki tahari, biryani",
-    "language": "marathi",
-    "currency": "INR"
-  },
-  {
-    "name": "mumbai",
-    "description": "Enjoy and Bhanbhani wit#",
-    "price": "2178",
-    "image": "https://pin.it/7CXkpQQRA",
-    "best_time_to_vist": "never",
-    "top_attraction": "dargha road, dhar road, garden",
-    "activities": "eat repeat sleep",
-    "local_dishes": "moen ki tahari, biryani",
-    "language": "marathi",
-    "currency": "INR"
+    "description": "nice place",
+    "price": "40000",
+    "image": "https://wallpapercave.com/wp/wp4646412.jpg",
+    "best_time_to_vist": "now",
+    "top_attraction": "taj hotel",
+    "activities": "gali ghumu",
+    "local_dishes": "vada paw",
+    "language": "marathi , hindi ",
+    "currency": "rs"
   },
   {
     "name": "parbhani",
@@ -48,15 +36,27 @@
     "currency": "INR"
   },
   {
-    "name": "mumbai",
+    "name": "maharashtra",
     "description": "nice place",
-    "price": "40000",
-    "image": "https://wallpapercave.com/wp/wp4646412.jpg",
+    "price": "2000",
+    "image": "moo.img",
     "best_time_to_vist": "now",
-    "top_attraction": "taj hotel",
-    "activities": "gali ghumu",
-    "local_dishes": "vada paw",
-    "language": "marathi , hindi ",
-    "currency": "rs"
+    "top_attraction": "FC Road",
+    "activities": "only see",
+    "local_dishes": "wada paw , poranpoli",
+    "language": "hindi",
+    "currency": "ruppes"
+  },
+  {
+    "name": "parbhani",
+    "description": "Enjoy and Bhanbhani wit#",
+    "price": "5678",
+    "image": "https://pin.it/7CXkpQQRA",
+    "best_time_to_vist": "never",
+    "top_attraction": "dargha road, dhar road, garden",
+    "activities": "eat repeat sleep",
+    "local_dishes": "moen ki tahari, biryani",
+    "language": "marathi",
+    "currency": "INR"
   }
 ]

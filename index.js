@@ -1,7 +1,13 @@
 const express = require('express');
+const path=require('path');
+const bcrypt = require('bcrypt');
+const fs = require('fs');
+
+
+const collection = require('./public/MongoDB/Mongo')
 const app = express();
 const port = 3000;
-const fs = require('fs');
+const { required } = require('nodemon/lib/config');
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
@@ -19,6 +25,48 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+app.get('/admin',(req,res)=>{
+    res.render('admin');
+})
+
+app.get('/package',(req,res)=>{
+    res.render('package');
+})
+
+app.get('/fake',(req,res)=>{
+    res.render('fake');
+})
+
+app.get('/login',(req,res)=>{
+    res.render("login");
+});
+
+app.get('/signup',(req,res)=>{
+    res.render("signup");
+
+})
+
+app.post('/signup', async (req,res)=>{
+
+    const data={
+        name: req.body.username,
+        email:req.body.email,
+        password:req.body.password
+    }
+    
+    const existingUser = await collection.findOne({email : data.email});
+    if(existingUser){
+        res.send("User already exists");
+        console.log("USer already Exist");
+    }
+    else{
+    const userdata = await collection.insertMany(data);
+    console.log(userdata," user data")
+    }
+
+
+})
 
 
 app.get('/fake', (req, res) => {

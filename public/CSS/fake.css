@@ -6,21 +6,39 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-   
+    color: white;
 }
-.main
+#main{
+    position: relative;
+    height:210vh;
+    width: 100%;
+}
+.sect
 {
-    min-height: 100vh;
+   height: 100vh;
     /*background:linear-gradient(#2b1055,#7597de);*/
     
-    width: 100%;
-    background-color: #fff;
+    width: 80%;
+    /* background-color: #fff; */
     
-    margin-left: 160px;
-    margin-right: 160px;
+  margin-left: 160px;
+    
     margin-top: 70px;
+   
+}
+::-webkit-scrollbar{
+    overflow: none;
     
 }
+
+.cons{
+    width: 100%;
+    overflow: none;
+}
+.cons::-webkit-scrollbar{
+    overflow: none;
+}
+
 nav {
     padding-top: -2px;
     display: flex;
@@ -30,13 +48,13 @@ nav {
     width: 100%;
     /* background-color: aqua; */
     margin-bottom: 40px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 .container{
     display: flex;
     justify-content: space-between;
     height: 700px;
-    width: 80%;
+    width: 90%;
 }
 .box1{
     width: 100px;
@@ -51,9 +69,10 @@ nav {
     /* padding: 40px;
     margin-top: 110px;
     margin-right: 160px; */
-    margin-top: 110px;
-    width: 400px;
+    /* margin-top: 110px; */
+    width: 100%;
     height: 500px;
+    margin-left: 500px;
 }
 #box2 h3{
     font-weight: 900;
@@ -75,7 +94,7 @@ nav {
 }
 
 .pack-pack{
-    margin-left: 43%;
+    margin-left: 50%;
 }
 
 .container2{
@@ -84,16 +103,16 @@ nav {
     /* display: flex;
    justify-content: right; */
     width: 40%;
-    
+    margin-left: 50px;
     position: absolute;
-    border-right: 1px black solid;
+    border-right: 1px #ff3f81 solid;
 }
 .container2-box {
 width: 90%;
 
 padding: 10px;
 margin: 5px;
-border: 1.5px black solid;
+border: 1.5px #ff3f81 solid;
 border-radius: 15px;
 }
 .container2-box:hover{
@@ -105,11 +124,11 @@ border-radius: 15px;
 .result{
     width: 40%;
     /* margin-right: 100px ; */
-    margin-left: 43%;
+    margin-left: 50%;
     display: flex;
     /* justify-content: end;
     align-items: center; */
-    border: 1px black solid;
+    border: 1px #ff3f81 solid;
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 10px;
