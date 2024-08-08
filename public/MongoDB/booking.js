@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 
@@ -31,7 +30,3 @@ const LoginSchema = new mongoose.Schema({
         required:[true, 'Path `password` is required.']
     }
 });
-
-const collection = new mongoose.model("users",LoginSchema);
-
-module.exports = collection;

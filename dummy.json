@@ -58,5 +58,29 @@
     "local_dishes": "moen ki tahari, biryani",
     "language": "marathi",
     "currency": "INR"
+  },
+  {
+    "name": "parbhani",
+    "description": "Enjoy and Bhanbhani wit#",
+    "price": "567788",
+    "image": "https://pin.it/7CXkpQQRA",
+    "best_time_to_vist": "never",
+    "top_attraction": "dargha road, dhar road, garden",
+    "activities": "eat repeat sleep",
+    "local_dishes": "moen ki tahari, biryani",
+    "language": "marathi",
+    "currency": "INR"
+  },
+  {
+    "name": "mumbai",
+    "description": "Enjoy and Bhanbhani wit#",
+    "price": "567788",
+    "image": "https://pin.it/7CXkpQQRA",
+    "best_time_to_vist": "never",
+    "top_attraction": "dargha road, dhar road, garden",
+    "activities": "eat repeat sleep",
+    "local_dishes": "moen ki tahari, biryani",
+    "language": "marathi",
+    "currency": "INR"
   }
 ]

@@ -34,9 +34,9 @@ app.get('/package',(req,res)=>{
     res.render('package');
 })
 
-app.get('/fake',(req,res)=>{
-    res.render('fake');
-})
+// app.get('/fake',(req,res)=>{
+//     res.render("fake");
+// })
 
 app.get('/login',(req,res)=>{
     res.render("login");
@@ -61,12 +61,37 @@ app.post('/signup', async (req,res)=>{
         console.log("USer already Exist");
     }
     else{
+        const saltRound = 10;
+        const hashPassword = await bcrypt.hash(data.password,saltRound);
+        data.password=hashPassword;
     const userdata = await collection.insertMany(data);
     console.log(userdata," user data")
     }
 
 
 })
+
+app.post('/login', async (req, res) => {
+    try {
+        const check = await collection.findOne({ email: req.body.email });
+        if (!check) {
+            res.render("login");
+            return res.status(400).send("Invalid Email or Password");
+        }
+
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        if (!isPasswordMatch) {
+            res.render("login");
+            return res.status(400).send("Invalid Password");
+        }
+
+        res.render("index"); 
+    } catch (e) {
+        console.error(e);
+        res.render("login");
+        return res.status(500).send("An error occurred during login");
+    }
+});
 
 
 app.get('/fake', (req, res) => {
@@ -75,7 +100,8 @@ app.get('/fake', (req, res) => {
             console.error(err);
             return res.status(500).send('Error reading file');
         }
-        res.json(JSON.parse(data));
+        res.render("fake");
+        //res.json(JSON.parse(data));
     });
 });
 
@@ -127,51 +153,7 @@ app.post('/admin', (req, res) => {
     });
 });
 
-// Delete a package by package name
 
-// Delete a package by package name
-// app.post('/delete', (req, res) => {
-//     const { packageName } = req.body;
-
-//     if (!packageName) {
-//         return res.status(400).send('Package name is required');
-//     }
-
-//     console.log('Received packageName:', packageName); // Log the incoming packageName
-
-//     fs.readFile('dummy.json', 'utf8', (err, data) => {
-//         if (err) {
-//             console.error('Error reading file:', err);
-//             return res.status(500).send('Error reading file');
-//         }
-
-//         let jsonData;
-//         try {
-//             jsonData = JSON.parse(data);
-//         } catch (parseError) {
-//             console.error('Error parsing JSON data:', parseError);
-//             return res.status(500).send('Error parsing JSON data');
-//         }
-
-//         console.log('Current JSON data:', jsonData); // Log the content of JSON file
-
-//         // Filter out the objects with the given name
-//         const filteredData = jsonData.filter(item => item.name !== packageName);
-
-//         if (filteredData.length === jsonData.length) {
-//             // No matching package found
-//             return res.status(404).send('Package not found');
-//         }
-
-//         fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
-//             if (err) {
-//                 console.error('Error writing file:', err);
-//                 return res.status(500).send('Error writing file');
-//             }
-//             res.send('Data deleted successfully');
-//         });
-//     });
-// });
 app.get('/search', (req, res) => {
     res.render('search', { packages: [], message: null });
 });
@@ -199,10 +181,8 @@ app.post('/search', (req, res) => {
             return res.status(500).send('Error parsing JSON data');
         }
         
-        // Find the packages with the given name
         const matchingPackages = jsonData.filter(item => item.name === packageName);
 
-        // Render the results using EJS with a message
         res.render('search', { packages: matchingPackages, message: null });
     });
 });
