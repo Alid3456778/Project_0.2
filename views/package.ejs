@@ -24,13 +24,17 @@
         <div id="packageDetails"></div>
     </div>
     <div class="inform">
-        <form action="" method="post">  
+        <form action="/booking" method="post">  
             <input type="text" name="username" placeholder="Enter Your Name">
             <input type="email" name="email" placeholder="Enter Your Email" id="">
             <input type="number" name="number" placeholder="Enter Your Number">
             <input type="number" name="people" placeholder="Enter the Number Of People">
             <input type="number" name="childrens" placeholder="Enter the Number Of Childerns">
             
+            <input type="hidden" name="packageName" id="packageName">
+            <input type="hidden" name="packagePrice" id="packagePrice">
+            <input type="hidden" name="packageDescription" id="packageDescription">
+
             <button type="submit">Book !</button>
         </form>
     </div>
@@ -91,6 +95,11 @@
 
                     </div>
                 `;
+
+                document.getElementById('packageName').value = packageDetails.name;
+                document.getElementById('packagePrice').value = packageDetails.price;
+                document.getElementById('packageDescription').value = packageDetails.description;
+
             } else {
                 packageDetailsDiv.innerHTML = '<p>No details found for this package.</p>';
             }

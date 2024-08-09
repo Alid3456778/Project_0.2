@@ -3,7 +3,7 @@ const path=require('path');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 
-
+const BK_collection= require('./public/MongoDB/booking')
 const collection = require('./public/MongoDB/Mongo')
 const app = express();
 const port = 3000;
@@ -69,7 +69,28 @@ app.post('/signup', async (req,res)=>{
     }
 
 
-})
+});
+
+app.post('/booking', async (req,res)=>{
+
+    const data={
+        name: req.body.username,
+        email:req.body.email,
+        number:req.body.number,
+        people:req.body.people,
+        childrens:req.body.childrens,
+        packageName:req.body.packageName,
+        packagePrice:req.body.packagePrice,
+        packageDescription:req.body.packageDescription
+    }
+    
+    
+    const userdata = await BK_collection.insertMany(data);
+    //console.log(userdata," user data")
+    
+
+
+});
 
 app.post('/login', async (req, res) => {
     try {
@@ -145,9 +166,12 @@ app.post('/admin', (req, res) => {
                 console.error(err);
                 return res.status(500).send('Error writing file');
             }
-            res.send('Data saved successfully');
+            //alert("Data saved successfully");
             // alert('Sucesfull Adding Package');
             // //window.location.href = "admin.html";
+            //res.status(201)('Subscription added successfully.');
+            res.redirect('admin');
+            
         
         });
     });

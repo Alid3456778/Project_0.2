@@ -10,13 +10,13 @@ const connect = mongoose.connect('mongodb://localhost:27017/Login-tut', {
     console.error('Connection error', err);
   });
 connect.then(()=>{
-    console.log("connected database Sucessfully");
+    console.log("connected Booking database Sucessfully");
 })
 .catch((e)=>{
     console.log("Error  ",e);
 });
 
-const LoginSchema = new mongoose.Schema({
+const BookingSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true, 'Path `username` is required.']
@@ -25,8 +25,32 @@ const LoginSchema = new mongoose.Schema({
         type:String,
         required:[true, 'Path `email` is required.']
     },
-    password:{
+    number:{
+        type:Number,
+        required:[true, 'Path `Number` is required.']
+    },
+    people:{
+        type:Number,
+        required:[true, 'Path `people` is required.']
+    },
+    childrens:{
+        type:Number,
+        required:false
+    },
+    packageName:{
         type:String,
-        required:[true, 'Path `password` is required.']
+        required:[true, 'Path `Package` is required.']
+    },
+    packagePrice:{
+        type:Number,
+        required:[true, 'Path `packagePrice` is required.']
+    },
+    packageDescription:{
+        type:String,
+        required:[true, 'Path `packageDescription` is required.']
     }
 });
+
+const BK_collection = new mongoose.model("booking",BookingSchema);
+
+module.exports = BK_collection;
