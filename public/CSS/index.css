@@ -5,10 +5,7 @@ body {
     transition: background-color 0.5s ease;
     text-decoration: none;
 }
-@font-face {
-    font-family: 'font';
-    src: url('/public/fonts/voyage-bold.otf');
-}
+
 
 /* .main-element {
     height: 150vh;

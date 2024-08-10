@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
 app.get('/admin',(req,res)=>{
     res.render('admin');
 })
@@ -41,6 +42,17 @@ app.get('/package',(req,res)=>{
 app.get('/login',(req,res)=>{
     res.render("login");
 });
+
+app.get('/customer_data', async (req, res) => {
+    try {
+        const users = await collection.find(); // Fetch all users from the collection
+        res.render('customer_data', { users: users }); // Render the 'users' template with the data
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error fetching users");
+    }
+});
+
 
 app.get('/signup',(req,res)=>{
     res.render("signup");
@@ -88,28 +100,40 @@ app.post('/booking', async (req,res)=>{
     const userdata = await BK_collection.insertMany(data);
     //console.log(userdata," user data")
     
-
+    res.send("Booking Successfull");
+    res.render('/fake');
 
 });
+
+app.get('/booking_data', async (req, res) => {
+    try {
+        const users = await BK_collection.find(); // Fetch all users from the collection
+        res.render('booking_data', { users: users }); // Render the 'users' template with the data
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error fetching users");
+    }
+});
+
 
 app.post('/login', async (req, res) => {
     try {
         const check = await collection.findOne({ email: req.body.email });
         if (!check) {
-            res.render("login");
+            res.render("/login");
             return res.status(400).send("Invalid Email or Password");
         }
 
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
         if (!isPasswordMatch) {
-            res.render("login");
+            res.render("/login");
             return res.status(400).send("Invalid Password");
         }
 
         res.render("index"); 
     } catch (e) {
         console.error(e);
-        res.render("login");
+        res.render("/login");
         return res.status(500).send("An error occurred during login");
     }
 });
@@ -121,7 +145,7 @@ app.get('/fake', (req, res) => {
             console.error(err);
             return res.status(500).send('Error reading file');
         }
-        res.render("fake");
+        res.render('fake');
         //res.json(JSON.parse(data));
     });
 });
@@ -170,12 +194,15 @@ app.post('/admin', (req, res) => {
             // alert('Sucesfull Adding Package');
             // //window.location.href = "admin.html";
             //res.status(201)('Subscription added successfully.');
-            res.redirect('admin');
+            res.redirect('/admin');
             
         
         });
     });
 });
+
+
+
 
 
 app.get('/search', (req, res) => {
@@ -239,8 +266,8 @@ app.post('/delete', (req, res) => {
         
         if (filteredData.length === jsonData.length) {
             // No matching package found
-            return res.status(404).send('Deleyed Sucesfully');
-            
+            res.redirect('/delete');
+            //return res.status(404).send('Deleyed Sucesfully');
         }
 
         fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
