@@ -13,7 +13,7 @@ h1 {
 
 table {
     width: 100%;
-    max-width: 600px;
+   width: auto;
     margin: 0 auto;
     border-collapse: collapse;
     background-color: #fff;

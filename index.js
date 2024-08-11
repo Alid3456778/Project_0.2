@@ -26,6 +26,29 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/pack',(req,res)=>{
+    let jsonData;
+    fs.readFile('dummy.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return res.status(500).send('Error reading file');
+        }
+
+        try {
+            jsonData = JSON.parse(data);
+            
+        } catch (parseError) {
+            console.error('Error parsing JSON data:', parseError);
+            return res.status(500).send('Error parsing JSON data');
+        }
+    
+
+        // res.render('pack', { packages: matchingPackages, message: null });
+        // res.send(jsonData);
+        const users = jsonData; // Fetch all users from the collection
+        res.render('pack', { users: users });
+    });
+})
 
 app.get('/admin',(req,res)=>{
     res.render('admin');
@@ -101,7 +124,7 @@ app.post('/booking', async (req,res)=>{
     //console.log(userdata," user data")
     
     res.send("Booking Successfull");
-    res.render('/fake');
+    res.render('index');
 
 });
 
