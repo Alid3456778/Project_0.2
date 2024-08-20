@@ -1,4 +1,101 @@
- <!DOCTYPE html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/fake.css">
+</head>
+<body>
+    <div id="main">
+        <nav>
+            <div class="Logo">Explo</div>
+        </nav>
+        <div class="sect">
+            <div class="div" id="resultsDiv"></div>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+        VANTA.GLOBE({
+          el: "#main",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 150.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+        });
+    </script>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const resultsDiv = document.getElementById('results');
+    
+    async function loadData() {
+        try {
+            let response = await fetch('./public/dummy.json'); // Ensure this path is correct
+            let tourData = await response.json();
+
+            const searchQuery = localStorage.getItem("searchQuery");
+            if (searchQuery) {
+                const filteredPackages = tourData.filter(packageItem => 
+                    packageItem.name.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                displayResults(filteredPackages);
+            } else {
+                displayResults(tourData); // Display all if no search query
+            }
+        } catch (error) {
+            console.error('Error fetching or parsing data:', error);
+        }
+    }
+
+    function displayResults(packages) {
+        resultsDiv.innerHTML = `<h2 class="pack-pack">Packages : </h2>`;
+        if (packages.length > 0) {
+            packages.forEach(packageItem => {
+                const packageCard = document.createElement('div');
+                packageCard.classList.add('package-card');
+                packageCard.innerHTML = `
+                <div class="result">
+                    <div class="result-img">
+                        <img src="${packageItem.image}" alt="${packageItem.name}">
+                    </div>
+                    <div class="result-text">
+                        <h2 class="result-head"><a href="package?name=${encodeURIComponent(packageItem.name)}&price=${encodeURIComponent(packageItem.price)}&description=${encodeURIComponent(packageItem.description)}">${packageItem.name}</a></h2>
+                        <p class="result-price">Price: ${packageItem.price}</p>
+                        <p class="result-descrip">Description: ${packageItem.description}</p>
+                        <h4>Best time to visit:</h4><p>${packageItem.best_time_to_visit}</p>
+                        <h4>Top attractions:</h4><p>${packageItem.top_attractions}</p>
+                        <h4>Activities:</h4><p>${packageItem.activities}</p>
+                        <h4>Local dishes:</h4><p>${packageItem.local_dishes}</p>
+                        <h4>Language and currency:</h4><p>${packageItem.language} | ${packageItem.currency}</p>
+                    </div>
+                </div>
+                `;
+                resultsDiv.appendChild(packageCard);
+            });
+        } else {
+            resultsDiv.innerHTML += '<p>No results found for your search.</p>';
+        }
+    }
+
+    loadData(); // Call the function to load data when the page loads
+});
+
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,75 +202,143 @@
                 }
             }
 
-            async function loadData() {
-                try {
-                    const storedData = localStorage.getItem('tourPackages');
-                    if (storedData) {
-                        tourData = JSON.parse(storedData);
-                        console.log("Data fetched from localStorage:", tourData);
-                    } else {
-                        console.error('No data found in localStorage');
-                    }
-                    searchPlace();
-                } catch (error) {
-                    console.error('Error loading initial data:', error);
-                }
-            }
+            // async function loadData() {
+            //     try {
+                    
 
-            function loadLastSearchQuery() {
-                const searchQuery = localStorage.getItem('searchQuery');
-                if (searchQuery) {
-                    name = searchQuery;
-                    places(name);
-                    searchPlace();
-                }
-            }
+            //         const storedData = localStorage.getItem('tourPackages');
+            //         if (storedData) {
+            //             tourData = JSON.parse(storedData);
+            //             console.log("Data fetched from localStorage:", tourData);
+            //         } else {
+            //             console.error('No data found in localStorage');
+            //         }
+            //         searchPlace();
+            //     } catch (error) {
+            //         console.error('Error loading initial data:', error);
+            //     }
+            // }
 
-            function searchPlace() {
-                if (!name) return;
-                const place = name.toLowerCase();
-                const placeData = tourData.filter(item => item.name.toLowerCase().includes(place));
-                console.log("place data is ", placeData);
-                if (placeData.length > 0) {
-                    displayResults(placeData);
-                } else {
-                    resultsDiv.innerHTML = '<p>No results found for this place.</p>';
-                }
-            }
+            // function loadLastSearchQuery() {
+            //     const searchQuery = localStorage.getItem('searchQuery');
+            //     if (searchQuery) {
+            //         name = searchQuery;
+            //         places(name);
+            //         searchPlace();
+            //     }
+            // }
 
-            function displayResults(packages) {
+            // function searchPlace() {
+            //     if (!name) return;
+            //     const place = name.toLowerCase();
+            //     const placeData = tourData.filter(item => item.name.toLowerCase().includes(place));
+            //     console.log("place data is ", placeData);
+            //     if (placeData.length > 0) {
+            //         displayResults(placeData);
+            //     } else {
+            //         resultsDiv.innerHTML = '<p>No results found for this place.</p>';
+            //     }
+            // }
+
+            // function displayResults(packages) {
                 
-                const resultsDiv = document.getElementById('results');
-                resultsDiv.innerHTML = `<h2 class="pack-pack">Packages : </h2>`;
-                packages.forEach((package, index) => {
+            //     const resultsDiv = document.getElementById('results');
+            //     resultsDiv.innerHTML = `<h2 class="pack-pack">Packages : </h2>`;
+            //     packages.forEach((package, index) => {
                     
 
 
-                    const packageCard = document.createElement('results');
-                    packageCard.classList.add('package-card');
+            //         const packageCard = document.createElement('results');
+            //         packageCard.classList.add('package-card');
 
 
 
 
-                    packageCard.innerHTML = `
-                    <div class="result">
-                          <div class="result-img">
-                        <img src="${package.image}" alt="${package.name}" ">
-                        </div>
-                    <div class="resutl-text">
-                        <h2 class="result-head"><a href="package?name=${encodeURIComponent(package.name)}&price=${encodeURIComponent(package.price)}&description=${encodeURIComponent(package.description)}">${package.name}</a></h2>
-                        <p class="result-price">Price: ${package.price}</p>
-                        <p calss="result-descrip">Description: ${package.description}</p>
-                     </div>
+            //         packageCard.innerHTML = `
+            //         <div class="result">
+            //               <div class="result-img">
+            //             <img src="${package.image}" alt="${package.name}" ">
+            //             </div>
+            //         <div class="resutl-text">
+            //             <h2 class="result-head"><a href="package?name=${encodeURIComponent(package.name)}&price=${encodeURIComponent(package.price)}&description=${encodeURIComponent(package.description)}">${package.name}</a></h2>
+            //             <p class="result-price">Price: ${package.price}</p>
+            //             <p calss="result-descrip">Description: ${package.description}</p>
+            //          </div>
                    
-                        </div>
-                    `;
-                    resultsDiv.appendChild(packageCard);
-                });
-            }
+            //             </div>
+            //         `;
+            //         resultsDiv.appendChild(packageCard);
+            //     });
+            // }
 
-            loadData();
-            loadLastSearchQuery();
+            // loadData();
+            // loadLastSearchQuery();
+            async function loadData() {
+    try {
+        const response = await fetch('./dummy.json'); // Ensure this path is correct
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const tourData = await response.json();
+        console.log("Data fetched from dummy.json:", tourData);
+        
+        // Load the last search query if it exists
+        loadLastSearchQuery(tourData);
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+}
+
+function loadLastSearchQuery(tourData) {
+    const searchQuery = localStorage.getItem('searchQuery');
+    if (searchQuery) {
+        const name = searchQuery;
+        places(name); // Assuming places function does something with the name
+        searchPlace(tourData, name);
+    }
+}
+
+function searchPlace(tourData, name) {
+    if (!name) return;
+    const place = name.toLowerCase();
+    const placeData = tourData.filter(item => item.name.toLowerCase().includes(place));
+    console.log("Place data is", placeData);
+
+    const resultsDiv = document.getElementById('results');
+    if (placeData.length > 0) {
+        displayResults(placeData);
+    } else {
+        resultsDiv.innerHTML = '<p>No results found for this place.</p>';
+    }
+}
+
+function displayResults(packages) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = `<h2 class="pack-pack">Packages:</h2>`;
+    
+    packages.forEach((package, index) => {
+        const packageCard = document.createElement('div'); // Change 'results' to 'div'
+        packageCard.classList.add('package-card');
+
+        packageCard.innerHTML = `
+        <div class="result">
+            <div class="result-img">
+                <img src="${package.image}" alt="${package.name}">
+            </div>
+            <div class="result-text">
+                <h2 class="result-head"><a href="package?name=${encodeURIComponent(package.name)}&price=${encodeURIComponent(package.price)}&description=${encodeURIComponent(package.description)}">${package.name}</a></h2>
+                <p class="result-price">Price: ${package.price}</p>
+                <p class="result-descrip">Description: ${package.description}</p>
+            </div>
+        </div>
+        `;
+        resultsDiv.appendChild(packageCard);
+    });
+}
+
+loadData(); // Load data when the page is loaded
+
+
         });
     </script>
     <!-- <footer class="site-footer" data-scroll-section>

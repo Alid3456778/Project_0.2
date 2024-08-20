@@ -10,6 +10,7 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     if (searchInput !== '') {
         // localStorage.clear();
         localStorage.setItem('searchQuery', searchInput);
+        
         window.location.href = 'fake'; // Redirect to the results page
     } else {
         console.error('Please enter a valid place name.');

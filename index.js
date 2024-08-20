@@ -2,6 +2,7 @@ const express = require('express');
 const path=require('path');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
+const { LocalStorage } = require('node-localstorage');
 
 const BK_collection= require('./public/MongoDB/booking')
 const collection = require('./public/MongoDB/Mongo')
@@ -23,12 +24,12 @@ app.use(express.json());
 
 // Define a route to render the index.ejs file
 app.get('/', (req, res) => {
-    res.render('index');
+            res.render('index'); 
 });
 
 app.get('/pack',(req,res)=>{
     let jsonData;
-    fs.readFile('dummy.json', 'utf8', (err, data) => {
+    fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading file:', err);
             return res.status(500).send('Error reading file');
@@ -58,9 +59,9 @@ app.get('/package',(req,res)=>{
     res.render('package');
 })
 
-// app.get('/fake',(req,res)=>{
-//     res.render("fake");
-// })
+app.get('/fake',(req,res)=>{
+    res.render("fake");
+})
 
 app.get('/login',(req,res)=>{
     res.render("login");
@@ -103,7 +104,7 @@ app.post('/signup', async (req,res)=>{
     console.log(userdata," user data")
     }
 
-
+    res.render('index');
 });
 
 app.post('/booking', async (req,res)=>{
@@ -163,14 +164,34 @@ app.post('/login', async (req, res) => {
 
 
 app.get('/fake', (req, res) => {
-    fs.readFile('dummy.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Error reading file');
-        }
-        res.render('fake');
-        //res.json(JSON.parse(data));
-    });
+    // fs.readFile('dummy.json', 'utf8', (err, data) => {
+    //     if (err) {
+    //         console.error(err);
+    //         return res.status(500).send('Error reading file');
+    //     }
+    //     else{
+          
+    //         res.render('fake');
+    //     }
+       
+    // });
+    // fs.readFile('dummy.json', 'utf8', (err, data) => {
+    //     if (err) {
+    //         console.error('Error reading file:', err);
+    //         return res.status(500).send('Error reading file');
+    //     }
+
+    //     try {
+    //         // Parse the JSON data
+    //         const tourPackages = JSON.parse(data);
+
+    //         // Pass the data to the template
+    //         res.render('fake', { tourPackages });
+    //     } catch (e) {
+    //         console.log('Error processing data:', e);
+    //         res.status(500).send('Error processing data');
+    //     }
+    // });
 });
 
 // Add a new package
@@ -191,7 +212,7 @@ app.post('/admin', (req, res) => {
     };
 
    
-    fs.readFile('dummy.json', 'utf8', (err, data) => {
+    fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error reading file');
@@ -208,7 +229,7 @@ app.post('/admin', (req, res) => {
 
         
 
-        fs.writeFile('dummy.json', JSON.stringify(jsonData, null, 2), (err) => {
+        fs.writeFile('./public/dummy.json', JSON.stringify(jsonData, null, 2), (err,data) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send('Error writing file');
@@ -217,7 +238,17 @@ app.post('/admin', (req, res) => {
             // alert('Sucesfull Adding Package');
             // //window.location.href = "admin.html";
             //res.status(201)('Subscription added successfully.');
-            res.redirect('/admin');
+           
+
+            
+            res.send(`
+                <script>
+                    alert('Your package is Successfully Added');
+                    window.location.href = '/admin';
+                </script>
+            `);
+                //res.send(jsonData);
+            
             
         
         });
@@ -241,7 +272,7 @@ app.post('/search', (req, res) => {
 
     console.log('Received packageName for search:', packageName);
 
-    fs.readFile('dummy.json', 'utf8', (err, data) => {
+    fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading file:', err);
             return res.status(500).send('Error reading file');
@@ -257,10 +288,54 @@ app.post('/search', (req, res) => {
         
         const matchingPackages = jsonData.filter(item => item.name === packageName);
 
+        //res.redirect('/admin');
         res.render('search', { packages: matchingPackages, message: null });
     });
 });
 
+// app.post('/delete', (req, res) => {
+//     const { packagePrice } = req.body;
+
+//     if (!packagePrice) {
+//         return res.status(400).send('Package price is required');
+//     }
+
+//     console.log('Received packagePrice for deletion:', packagePrice);
+
+//     fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
+//         if (err) {
+//             console.error('Error reading file:', err);
+//             return res.status(500).send('Error reading file');
+//         }
+
+//         let jsonData;
+//         try {
+//             jsonData = JSON.parse(data);
+//         } catch (parseError) {
+//             console.error('Error parsing JSON data:', parseError);
+//             return res.status(500).send('Error parsing JSON data');
+//         }
+
+//         // Filter out the objects with the given price
+//         const filteredData = jsonData.filter(item => item.price !== packagePrice);
+        
+//         if (filteredData.length === jsonData.length) {
+//             // No matching package found
+//             //return res.status(404).send('No package found with the specified price');
+//             res.redirect('/admin');
+//         }
+
+//         fs.writeFile('./public/dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
+//             if (err) {
+//                 console.error('Error writing file:', err);
+//                 return res.status(500).send('Error writing file');
+//             }
+//             // Redirect back to the current page
+//             res.redirect('/admin'); // This redirects to the referring page
+            
+//         });
+//     });
+// });
 app.post('/delete', (req, res) => {
     const { packagePrice } = req.body;
 
@@ -270,7 +345,7 @@ app.post('/delete', (req, res) => {
 
     console.log('Received packagePrice for deletion:', packagePrice);
 
-    fs.readFile('dummy.json', 'utf8', (err, data) => {
+    fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading file:', err);
             return res.status(500).send('Error reading file');
@@ -286,23 +361,29 @@ app.post('/delete', (req, res) => {
 
         // Filter out the objects with the given price
         const filteredData = jsonData.filter(item => item.price !== packagePrice);
-        
+
         if (filteredData.length === jsonData.length) {
-            // No matching package found
-            res.redirect('/delete');
-            //return res.status(404).send('Deleyed Sucesfully');
+            // No matching package found, redirecting without alert
+            return res.redirect('/admin');
         }
 
-        fs.writeFile('dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
+        fs.writeFile('./public/dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
             if (err) {
                 console.error('Error writing file:', err);
                 return res.status(500).send('Error writing file');
             }
-            // Redirect back to the search page with a deletion success message
-            res.redirect('/search', '&message=deleted');
+            // Send a response that includes the alert script and redirection
+            res.send(`
+                <script>
+                    alert('Your package is Successfully Deleted');
+                    window.location.href = '/admin';
+                </script>
+            `);
         });
     });
 });
+
+
 
 
 // Start the server
