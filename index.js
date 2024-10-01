@@ -9,20 +9,23 @@ const collection = require('./public/MongoDB/Mongo')
 const app = express();
 const port = 3000;
 const { required } = require('nodemon/lib/config');
+const session = require('express-session');
 
-// Set EJS as the view engine
 app.set('view engine', 'ejs');
 
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Middleware to parse URL-encoded bodies (form submissions)
 app.use(express.urlencoded({ extended: true }));
 
-// Middleware to parse JSON bodies
 app.use(express.json());
 
-// Define a route to render the index.ejs file
+app.use(session({
+  secret: 'your_secret_key',  
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }   
+}));
+
 app.get('/', (req, res) => {
             res.render('index'); 
 });
@@ -46,7 +49,7 @@ app.get('/pack',(req,res)=>{
 
         // res.render('pack', { packages: matchingPackages, message: null });
         // res.send(jsonData);
-        const users = jsonData; // Fetch all users from the collection
+        const users = jsonData; 
         res.render('pack', { users: users });
     });
 })
@@ -56,7 +59,8 @@ app.get('/admin',(req,res)=>{
 })
 
 app.get('/package',(req,res)=>{
-    res.render('package');
+    // res.render('package');
+    res.render('package', { session: req.session });
 })
 
 app.get('/fake',(req,res)=>{
@@ -69,150 +73,174 @@ app.get('/login',(req,res)=>{
 
 app.get('/customer_data', async (req, res) => {
     try {
-        const users = await collection.find(); // Fetch all users from the collection
-        res.render('customer_data', { users: users }); // Render the 'users' template with the data
+        const users = await collection.find(); 
+        res.render('customer_data', { users: users }); 
     } catch (err) {
         console.log(err);
         res.status(500).send("Error fetching users");
     }
 });
 
-
-app.get('/signup',(req,res)=>{
+app.get('/signup', (req, res) => {
     res.render("signup");
-
-})
-
-app.post('/signup', async (req,res)=>{
-
-    const data={
-        name: req.body.username,
-        email:req.body.email,
-        password:req.body.password
-    }
-    
-    const existingUser = await collection.findOne({email : data.email});
-    if(existingUser){
-        res.send("User already exists");
-        console.log("USer already Exist");
-    }
-    else{
-        const saltRound = 10;
-        const hashPassword = await bcrypt.hash(data.password,saltRound);
-        data.password=hashPassword;
-    const userdata = await collection.insertMany(data);
-    console.log(userdata," user data")
-    }
-
-    res.render('index');
 });
 
-app.post('/booking', async (req,res)=>{
+app.post('/signup', async (req, res) => {
+    try {
+        
+        const data = {
+            name: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        };
 
-    const data={
-        name: req.body.username,
-        email:req.body.email,
-        number:req.body.number,
-        people:req.body.people,
-        childrens:req.body.childrens,
-        packageName:req.body.packageName,
-        packagePrice:req.body.packagePrice,
-        packageDescription:req.body.packageDescription
+        
+        const existingUser = await collection.findOne({ email: data.email });
+        if (existingUser) {
+        
+            return res.status(400).send("User already exists. Please log in.");
+        }
+
+        
+        const saltRounds = 10;
+        const hashPassword = await bcrypt.hash(data.password, saltRounds);
+        data.password = hashPassword;
+
+        
+        const userdata = await collection.insertMany(data);
+        console.log(userdata, "user data saved");
+
+        
+        req.session.user = {
+            id: userdata[0]._id,
+            name: userdata[0].name,
+            email: userdata[0].email
+        };
+
+        
+        res.redirect('/packages');
+    } catch (error) {
+        console.error("Signup error:", error);
+        res.status(500).send("An error occurred during signup. Please try again.");
+    }
+});
+
+function isAuthenticated(req, res, next) {
+    if (req.session.user) {
+        
+        return next();
     }
     
-    
-    const userdata = await BK_collection.insertMany(data);
-    //console.log(userdata," user data")
-    
-    res.send("Booking Successfull");
-    res.render('index');
+    res.redirect('/login');
+}
 
+app.post('/booking', isAuthenticated, async (req, res) => {
+    try {
+        
+        const data = {
+            name: req.body.username,
+            email: req.body.email,
+            number: req.body.number,
+            people: req.body.people,
+            childrens: req.body.childrens,
+            packageName: req.body.packageName,
+            packagePrice: req.body.packagePrice,
+            packageDescription: req.body.packageDescription,
+            transportType: req.body.transportType, 
+        };
+
+        
+        if (req.body.transportType === 'bus') {
+            data.transportDetails = {
+                type: 'bus',
+                busType: req.body.busType 
+            };
+        } else if (req.body.transportType === 'car') {
+            data.transportDetails = {
+                type: 'car',
+                carType: req.body.carType 
+            };
+        }
+
+    
+        const userdata = await BK_collection.insertMany(data);
+
+        
+        res.render('index', { message: "Booking Successful" });
+    } catch (error) {
+        console.error('Error processing booking:', error);
+        res.status(500).send('Booking failed, please try again later.');
+    }
 });
 
 app.get('/booking_data', async (req, res) => {
     try {
-        const users = await BK_collection.find(); // Fetch all users from the collection
-        res.render('booking_data', { users: users }); // Render the 'users' template with the data
+        const users = await BK_collection.find(); 
+        res.render('booking_data', { users: users }); 
     } catch (err) {
         console.log(err);
         res.status(500).send("Error fetching users");
     }
 });
-
 
 app.post('/login', async (req, res) => {
     try {
         const check = await collection.findOne({ email: req.body.email });
         if (!check) {
-            res.render("/login");
-            return res.status(400).send("Invalid Email or Password");
+            
+            return res.status(400).render("login", { error: "Invalid Email or Password" });
         }
+
 
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
         if (!isPasswordMatch) {
-            res.render("/login");
-            return res.status(400).send("Invalid Password");
+           
+            return res.status(400).render("login", { error: "Invalid Password" });
         }
 
-        res.render("index"); 
+        
+        req.session.user = {
+            id: check._id,
+            name: check.name,
+            email: check.email
+        };
+
+       // res.redirect('/packages');
+       res.render("index"); 
     } catch (e) {
         console.error(e);
-        res.render("/login");
-        return res.status(500).send("An error occurred during login");
+        return res.status(500).render("login", { error: "An error occurred during login" });
     }
 });
 
-
-app.get('/fake', (req, res) => {
-    // fs.readFile('dummy.json', 'utf8', (err, data) => {
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(500).send('Error reading file');
-    //     }
-    //     else{
-          
-    //         res.render('fake');
-    //     }
-       
-    // });
-    // fs.readFile('dummy.json', 'utf8', (err, data) => {
-    //     if (err) {
-    //         console.error('Error reading file:', err);
-    //         return res.status(500).send('Error reading file');
-    //     }
-
-    //     try {
-    //         // Parse the JSON data
-    //         const tourPackages = JSON.parse(data);
-
-    //         // Pass the data to the template
-    //         res.render('fake', { tourPackages });
-    //     } catch (e) {
-    //         console.log('Error processing data:', e);
-    //         res.status(500).send('Error processing data');
-    //     }
-    // });
-});
-
-// Add a new package
 app.post('/admin', (req, res) => {
-    const { name, descp, price, pic,best_time_to_vist,top_attraction,activities,local_dishes,language,currency } = req.body;
+    const { name, descp, price, pic, best_time_to_vist, top_attraction, activities, local_dishes, language, currency, numDays } = req.body;
 
     const newData = {
         name: name,
         description: descp,
         price: price,
         image: pic,
-        best_time_to_vist:best_time_to_vist,
-        top_attraction:top_attraction,
-        activities:activities,
-        local_dishes:local_dishes,
-        language:language,
-        currency:currency  
+        best_time_to_vist: best_time_to_vist,
+        top_attraction: top_attraction,
+        activities: activities,
+        local_dishes: local_dishes,
+        language: language,
+        currency: currency
     };
 
-   
-    fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
+
+    for (let i = 1; i <= numDays; i++) {
+        const dayTitle = req.body[`day${i}_title`];
+        const dayDetails = req.body[`day${i}_details`];
+
+        if (dayTitle && dayDetails) {
+            newData[`day${i}_title`] = dayTitle;
+            newData[`day${i}_details`] = dayDetails;
+        }
+    }
+
+    fs.readFile(path.join(__dirname, './public/dummy.json'), 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return res.status(500).send('Error reading file');
@@ -224,40 +252,24 @@ app.post('/admin', (req, res) => {
             console.error(parseError);
             return res.status(500).send('Error parsing JSON data');
         }
-        
+
         jsonData.push(newData);
 
-        
-
-        fs.writeFile('./public/dummy.json', JSON.stringify(jsonData, null, 2), (err,data) => {
+        fs.writeFile(path.join(__dirname, './public/dummy.json'), JSON.stringify(jsonData, null, 2), (err) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send('Error writing file');
             }
-            //alert("Data saved successfully");
-            // alert('Sucesfull Adding Package');
-            // //window.location.href = "admin.html";
-            //res.status(201)('Subscription added successfully.');
-           
 
-            
             res.send(`
                 <script>
-                    alert('Your package is Successfully Added');
+                    alert('Your package is Successfully Added with Days details');
                     window.location.href = '/admin';
                 </script>
             `);
-                //res.send(jsonData);
-            
-            
-        
         });
     });
 });
-
-
-
-
 
 app.get('/search', (req, res) => {
     res.render('search', { packages: [], message: null });
@@ -269,8 +281,6 @@ app.post('/search', (req, res) => {
     if (!packageName) {
         return res.status(400).send('Package name is required');
     }
-
-    console.log('Received packageName for search:', packageName);
 
     fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
         if (err) {
@@ -285,57 +295,21 @@ app.post('/search', (req, res) => {
             console.error('Error parsing JSON data:', parseError);
             return res.status(500).send('Error parsing JSON data');
         }
-        
-        const matchingPackages = jsonData.filter(item => item.name === packageName);
 
-        //res.redirect('/admin');
-        res.render('search', { packages: matchingPackages, message: null });
+        
+        const matchingPackages = jsonData.filter(item =>
+            item.name.toLowerCase().startsWith(packageName.toLowerCase())
+        );
+
+        
+        if (matchingPackages.length === 0) {
+            return res.send('<p>No matching packages found.</p>');
+        }
+       res.render('search', { packages: matchingPackages, message: null });
     });
 });
 
-// app.post('/delete', (req, res) => {
-//     const { packagePrice } = req.body;
 
-//     if (!packagePrice) {
-//         return res.status(400).send('Package price is required');
-//     }
-
-//     console.log('Received packagePrice for deletion:', packagePrice);
-
-//     fs.readFile('./public/dummy.json', 'utf8', (err, data) => {
-//         if (err) {
-//             console.error('Error reading file:', err);
-//             return res.status(500).send('Error reading file');
-//         }
-
-//         let jsonData;
-//         try {
-//             jsonData = JSON.parse(data);
-//         } catch (parseError) {
-//             console.error('Error parsing JSON data:', parseError);
-//             return res.status(500).send('Error parsing JSON data');
-//         }
-
-//         // Filter out the objects with the given price
-//         const filteredData = jsonData.filter(item => item.price !== packagePrice);
-        
-//         if (filteredData.length === jsonData.length) {
-//             // No matching package found
-//             //return res.status(404).send('No package found with the specified price');
-//             res.redirect('/admin');
-//         }
-
-//         fs.writeFile('./public/dummy.json', JSON.stringify(filteredData, null, 2), (err) => {
-//             if (err) {
-//                 console.error('Error writing file:', err);
-//                 return res.status(500).send('Error writing file');
-//             }
-//             // Redirect back to the current page
-//             res.redirect('/admin'); // This redirects to the referring page
-            
-//         });
-//     });
-// });
 app.post('/delete', (req, res) => {
     const { packagePrice } = req.body;
 
@@ -360,7 +334,7 @@ app.post('/delete', (req, res) => {
         }
 
         // Filter out the objects with the given price
-        const filteredData = jsonData.filter(item => item.price !== packagePrice);
+        const filteredData = jsonData.filter(item => item.price !== packagePrice );
 
         if (filteredData.length === jsonData.length) {
             // No matching package found, redirecting without alert
@@ -383,10 +357,6 @@ app.post('/delete', (req, res) => {
     });
 });
 
-
-
-
-// Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

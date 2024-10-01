@@ -21,12 +21,10 @@
     <div class="container">
         <h1>Search Packages</h1>
         <div class="results">
-            <!-- Display message if present -->
             <% if (message) { %>
                 <div class="message"><%= message === 'deleted' ? 'Package deleted successfully.' : message %></div>
             <% } %>
 
-            <!-- Results will be displayed here -->
             <% if (packages && packages.length > 0) { %>
                 <% packages.forEach(function(item) { %>
                     <div class="result-item">

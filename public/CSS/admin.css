@@ -116,4 +116,16 @@
       font-size: 1em;
     }
   }
+
+  .day-detail{
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  .day-head{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 4px;
+  }
   

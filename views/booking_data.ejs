@@ -17,6 +17,7 @@
                 <th>Children</th>
                 <th>Package Name</th>
                 <th>Package Price</th>
+                <th>Vehical</th>
         </tr>
         <% users.forEach(user => { %>
         <tr>
@@ -27,6 +28,7 @@
             <td data-label="Children"><%= user.childrens %></td>
             <td data-label="Package Name"><%= user.packageName %></td>
             <td data-label="Package Price"><%= user.packagePrice %></td>
+            <td data-label="Transport"><%= user.transportType %></td>
         </tr>
         <% }) %>
     </table>
