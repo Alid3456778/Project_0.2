@@ -166,7 +166,12 @@ app.post('/booking', isAuthenticated, async (req, res) => {
         const userdata = await BK_collection.insertMany(data);
 
         
-        res.render('index', { message: "Booking Successful" });
+    //     res.render('index', { message: "Booking Successful" });
+    // } catch (error) {
+    //     console.error('Error processing booking:', error);
+    //     res.status(500).send('Booking failed, please try again later.');
+    // }
+    return res.redirect(`/payment?packageName=${encodeURIComponent(req.body.packageName)}&packagePrice=${encodeURIComponent(req.body.packagePrice)}&people=${encodeURIComponent(req.body.people)}`);
     } catch (error) {
         console.error('Error processing booking:', error);
         res.status(500).send('Booking failed, please try again later.');
@@ -356,6 +361,39 @@ app.post('/delete', (req, res) => {
         });
     });
 });
+
+//------------------------------------------------
+app.get('/payment', (req, res) => {
+    const { packageName, packagePrice, people } = req.query;
+
+    if (!packageName || !packagePrice || !people) {
+        return res.status(400).send("Invalid payment details");
+    }
+
+    const totalPrice = packagePrice * people;
+    
+    res.render('payment', {
+        packageName: packageName,
+        packagePrice: packagePrice,
+        peopleCount: people,
+        totalAmount: totalPrice
+    });
+});
+
+app.post('/submitPayment', (req, res) => {
+    const { cardNumber, expiryDate, cvv, totalAmount } = req.body;
+
+    if (!cardNumber || !expiryDate || !cvv || !totalAmount) {
+        return res.status(400).send("Missing payment details");
+    }
+
+    // Simulate successful payment processing
+   // res.send(`Payment of $${totalAmount} for your package was successful! Thank you for your booking.`);
+   res.render('index', { message: "Booking Successful" });
+});
+
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
