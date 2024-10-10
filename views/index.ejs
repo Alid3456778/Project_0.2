@@ -27,7 +27,7 @@
             <div class="Logo">Explo</div>
             <div class="menu">
                 <a href="login">MA</a>
-                <a href="admin">Sg</a>
+                <!-- <a href="admin">Sg</a> -->
             </div>
         </nav>
 
@@ -82,28 +82,23 @@
 
         <div class="video-base" data-scroll-section>
             <div class="video-base-1 basee">
-                <img src="pic/video-img-section/Construction.jpg" alt="" class="video-image">
-                
+                <img src="https://i.pinimg.com/564x/e9/ff/ac/e9ffac726f5d1a79647f5f7d2d737924.jpg" alt="" class="video-image">              
                 <p class="basee-text">Explore the world’s most exotic destinations with our specially curated tours. Whether it's the serene beaches of Bali, the vibrant streets of Marrakech, or the ancient wonders of Machu Picchu, we have a tour that will captivate your imagination and satisfy your wanderlust. Each journey is designed to offer unique experiences and unforgettable memories.</p>
-                <video class="image-video" src="pic/video-img-section/13d9f0cbb2f3186079356db5114ffc24.mp4" autoplay
-                    loop muted>
+                <video class="image-video" src="pic/video-img-section/new-image/img2-2.mp4" autoplay loop muted>
                 </video>
             </div>
 
             <div class="video-base-2 basee">
-                <img src="pic/video-img-section/Photo by Ryunosuke Kikuno on Unsplash.jpg" alt="" class="video-image">
+                <img src="https://i.pinimg.com/564x/44/03/f0/4403f0a973a39baf1c5fca1165f85b68.jpg" alt="" class="video-image">
                 <p class="basee-text">Our tours are tailored to meet your every need, providing you with personalized experiences that go beyond the ordinary. From private guided tours to bespoke itineraries, we ensure that every detail is crafted to perfection. Enjoy exclusive access to hidden gems, local delicacies, and cultural experiences that are not available to the average tourist.</p>
-                <video class="image-video" src="pic/video-img-section/b7db2165888240db82c09c1534cb7607.mp4" autoplay
-                    loop muted>
+                <video class="image-video" src="pic/video-img-section/new-image/img1-1.mp4" autoplay loop muted>
                 </video>
 
             </div>
-            <div class="video-base-3 basee"><img
-                    src="pic/video-img-section/Construction site stock image_ Image of machinery, construction - 21079465.jpg"
-                    alt="" class="video-image">
+            <div class="video-base-3 basee">
+                <img src="https://i.pinimg.com/564x/96/28/fd/9628fdba9736f35a6abc0c424b934e07.jpg"alt="" class="video-image">
                 <p class="basee-text">Adventure awaits you at every turn with our thrilling tour packages. Whether you're an adrenaline junkie seeking heart-pounding activities or a nature lover eager to explore breathtaking landscapes, we have something for everyone. Dive into exciting adventures, explore uncharted territories, and create stories that will last a lifetime.</p>
-                <video class="image-video" src="pic/video-img-section/3bf4d97276a436723c64b25ba36cd469.mp4" autoplay
-                    loop muted>
+                <video class="image-video" src="pic/video-img-section/new-image/img3-3.mp4" autoplay loop muted>
                 </video>
             </div>
         </div>
@@ -157,10 +152,10 @@
         fetch('/fake')
             .then(response => response.json())
             .then(data => {
-                // Save the data to localStorage
+                
                 localStorage.setItem('tourPackages', JSON.stringify(data));
                 console.log('Data saved to localStorage');
-                //console.log(JSON.stringify(data));
+            
             })
             .catch(error => {
                 console.error('Error fetching data:', error);

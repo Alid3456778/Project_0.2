@@ -367,6 +367,7 @@ nav {
    top: 30px;
     transition: opacity 0.5s ease;
     padding: 5px;
+    color: white;
 }
 
 .basee{
@@ -455,10 +456,7 @@ nav {
     border-bottom: 2px solid white;
 }
 
-/* .left_base:hover{
-    background-image: url(pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg);
-    /* background: url(pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg); 
-} */
+
 
 
 .right-base-font{
@@ -519,30 +517,26 @@ transform: translateX(0);
     
 }
 
-/* .float-img-1 img{
-    height: 500px;
-    width: 300px;
-}
-
-.float-img-1 :hover .float-img-1{
-   filter: none;
-} */
 
 .float-text-1{
     position: absolute;
     top: 400px;
     left: 400px;
 
+    backdrop-filter:blur(10px);
+    border-radius: 10px;
 
-    height: 50px;
+    height: fit-content;
     width: 400px;
+
+    padding: 5px;
 
 }
 
 
 .float-img-2{
     position: absolute;
-    background-image: url(../pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg);
+    background-image: url(https://i.pinimg.com/564x/9b/ce/50/9bce50348e275736f80f21e5b06a4a90.jpg);
     top: 600px;
     right: 70px;
     height: 500px;
@@ -555,14 +549,19 @@ transform: translateX(0);
     right: 370px;
 
 
-    height: 50px;
+    backdrop-filter:blur(10px);
+    border-radius: 10px;
+
+    height: fit-content;
     width: 400px;
+
+    padding: 5px;
 
 }
 
 .float-img-3{
     position: absolute;
-    background-image: url(../pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg);
+    background-image: url(https://i.pinimg.com/564x/3b/7e/91/3b7e9126edce49a174e9b4bebe93f94f.jpg);
     top: 1000px;
     left: 90px;
     height: 500px;
@@ -575,14 +574,19 @@ transform: translateX(0);
     left: 400px;
 
 
-    height: 50px;
+    backdrop-filter:blur(10px);
+    border-radius: 10px;
+
+    height: fit-content;
     width: 400px;
+
+    padding: 5px;
 
 }
 
 .float-img-4{
     position: absolute;
-    background-image: url(../pic/Editorial\ Illustrations\ -\ vol_\ 1.jpg);
+    background-image: url(https://i.pinimg.com/564x/9b/5e/0e/9b5e0eaf68f5398a8eed3886303159d7.jpg);
     top: 1600px;
     right: 70px;
     height: 500px;
@@ -595,8 +599,14 @@ transform: translateX(0);
     right: 370px;
 
 
-    height: 50px;
+    background:transparent ;
+    backdrop-filter:blur(10px);
+    border-radius: 10px;
+
+    height: fit-content;
     width: 400px;
+
+    padding: 5px;
 
 }
 
