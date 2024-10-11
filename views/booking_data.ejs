@@ -18,6 +18,7 @@
                 <th>Package Name</th>
                 <th>Package Price</th>
                 <th>Vehical</th>
+                <th>Flight</th>
         </tr>
         <% users.forEach(user => { %>
         <tr>
@@ -29,6 +30,7 @@
             <td data-label="Package Name"><%= user.packageName %></td>
             <td data-label="Package Price"><%= user.packagePrice %></td>
             <td data-label="Transport"><%= user.transportType %></td>
+            <td data-label="flight"><%= user.flight%></td>
         </tr>
         <% }) %>
     </table>

@@ -147,6 +147,7 @@ app.post('/booking', isAuthenticated, async (req, res) => {
             packagePrice: req.body.packagePrice,
             packageDescription: req.body.packageDescription,
             transportType: req.body.transportType, 
+            flight:req.body.flight,
         };
 
         

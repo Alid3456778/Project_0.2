@@ -107,6 +107,10 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Path `packageDescription` is required.']
     },
+    flight:{
+        type: String,
+        required: [true, 'Path `Fight` is required.']
+    },
     transportType: {
         type: String,
         enum: ['bus', 'car'],  // Ensures transportType is either 'bus' or 'car'
