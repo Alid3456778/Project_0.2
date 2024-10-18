@@ -7,7 +7,7 @@ const { LocalStorage } = require('node-localstorage');
 const BK_collection= require('./public/MongoDB/booking')
 const collection = require('./public/MongoDB/Mongo')
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const { required } = require('nodemon/lib/config');
 const session = require('express-session');
 
