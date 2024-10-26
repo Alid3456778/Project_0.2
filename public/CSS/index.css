@@ -662,10 +662,10 @@ transform: translateX(0);
                 cursor .4s step-end infinite alternate;
 }
 
-@keyframes cursor {
+@keyframes r {
     50%{border-color: transparent}
 }
-@keyframes typing {
+@keyframes tycursoping {
     30% { width: 0 }
     60% { width: 100% }
 }

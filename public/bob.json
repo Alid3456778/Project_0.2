@@ -383,7 +383,20 @@
   "local_dishes": "Vada Pav, Pav Bhaji",
   "language": "Marathi, Hindi, English",
   "currency": "Indian Rupee"
+},
+{
+  "name": "Paris",
+  "country": "France",
+  "image": "https://i.pinimg.com/736x/ad/a7/9a/ada79afd2db935d7371a404b75010dc2.jpg",
+  "description": "The romantic city of lights, known for its stunning landmarks, art, and rich culture.",
+  "best_time_to_visit": "April to June",
+  "top_attractions": "Eiffel Tower, Louvre Museum",
+  "activities": "Sightseeing, Seine River Cruises",
+  "local_dishes": "Croissants, Escargot",
+  "language": "French",
+  "currency": "Euro"
 }
+
         
         
       

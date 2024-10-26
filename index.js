@@ -69,6 +69,7 @@ app.get('/fake',(req,res)=>{
 
 app.get('/login',(req,res)=>{
     res.render("login");
+    
 });
 
 app.get('/customer_data', async (req, res) => {
@@ -85,45 +86,45 @@ app.get('/signup', (req, res) => {
     res.render("signup");
 });
 
-app.post('/signup', async (req, res) => {
-    try {
+// app.post('/signup', async (req, res) => {
+//     try {
         
-        const data = {
-            name: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        };
+//         const data = {
+//             name: req.body.username,
+//             email: req.body.email,
+//             password: req.body.password
+//         };
 
         
-        const existingUser = await collection.findOne({ email: data.email });
-        if (existingUser) {
+//         const existingUser = await collection.findOne({ email: data.email });
+//         if (existingUser) {
         
-            return res.status(400).send("User already exists. Please log in.");
-        }
+//             return res.status(400).send("User already exists. Please log in.");
+//         }
 
         
-        const saltRounds = 10;
-        const hashPassword = await bcrypt.hash(data.password, saltRounds);
-        data.password = hashPassword;
+//         const saltRounds = 10;
+//         const hashPassword = await bcrypt.hash(data.password, saltRounds);
+//         data.password = hashPassword;
 
         
-        const userdata = await collection.insertMany(data);
-        console.log(userdata, "user data saved");
+//         const userdata = await collection.insertMany(data);
+//         console.log(userdata, "user data saved");
 
         
-        req.session.user = {
-            id: userdata[0]._id,
-            name: userdata[0].name,
-            email: userdata[0].email
-        };
+//         req.session.user = {
+//             id: userdata[0]._id,
+//             name: userdata[0].name,
+//             email: userdata[0].email
+//         };
 
         
-        res.redirect('/packages');
-    } catch (error) {
-        console.error("Signup error:", error);
-        res.status(500).send("An error occurred during signup. Please try again.");
-    }
-});
+//         res.redirect('/index');
+//     } catch (error) {
+//         console.error("Signup error:", error);
+//         res.status(500).send("An error occurred during signup. Please try again.");
+//     }
+// });
 
 function isAuthenticated(req, res, next) {
     if (req.session.user) {
@@ -189,35 +190,35 @@ app.get('/booking_data', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
-    try {
-        const check = await collection.findOne({ email: req.body.email });
-        if (!check) {
+// app.post('/login', async (req, res) => {
+//     try {
+//         const check = await collection.findOne({ email: req.body.email });
+//         if (!check) {
             
-            return res.status(400).render("login", { error: "Invalid Email or Password" });
-        }
+//             return res.status(400).render("login", { error: "Invalid Email or Password" });
+//         }
 
 
-        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        if (!isPasswordMatch) {
+//         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+//         if (!isPasswordMatch) {
            
-            return res.status(400).render("login", { error: "Invalid Password" });
-        }
+//             return res.status(400).render("login", { error: "Invalid Password" });
+//         }
 
         
-        req.session.user = {
-            id: check._id,
-            name: check.name,
-            email: check.email
-        };
+//         req.session.user = {
+//             id: check._id,
+//             name: check.name,
+//             email: check.email
+//         };
 
-       // res.redirect('/packages');
-       res.render("index"); 
-    } catch (e) {
-        console.error(e);
-        return res.status(500).render("login", { error: "An error occurred during login" });
-    }
-});
+//        // res.redirect('/packages');
+//        res.render("index"); 
+//     } catch (e) {
+//         console.error(e);
+//         return res.status(500).render("login", { error: "An error occurred during login" });
+//     }
+// });
 
 app.post('/admin', (req, res) => {
     const { name, descp, price, pic, best_time_to_vist, top_attraction, activities, local_dishes, language, currency, numDays } = req.body;
@@ -390,7 +391,8 @@ app.post('/submitPayment', (req, res) => {
 
     // Simulate successful payment processing
    // res.send(`Payment of $${totalAmount} for your package was successful! Thank you for your booking.`);
-   res.render('index', { message: "Booking Successful" });
+   res.render("index");
+   
 });
 
 

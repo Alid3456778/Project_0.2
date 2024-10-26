@@ -17,13 +17,7 @@ scroller.on('scroll', (scrollArgs) => {
   }
 
 });
-// const cursor = document.querySelector(".cursor");
-// const main = document.querySelector(".main-element");
 
-// main.addEventListener("mousemove",(event)=>{
-//   cursor.style.top = event.clientY + "px";
-//   cursor.style.left = event.clientX + "px";
-// })
 
 const videoOverlay = document.querySelectorAll(".video-base-1");
 
@@ -40,18 +34,7 @@ videoOverlay.forEach((overlay) => {
   });
 });
 
-// window.onscroll = function() {myFunction()};
 
-// var navbar = document.getElementById("float-image");
-// var sticky = navbar.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navbar.classList.add("sticky")
-//   } else {
-//     navbar.classList.remove("sticky");
-//   }
-// }
 
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach((entry)=>{
